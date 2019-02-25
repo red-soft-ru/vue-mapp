@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": false,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": false,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "strictPropertyInitialization": false,
+    "baseUrl": ".",
+    "paths": {
+      "@vmsrc/*": ["src/*"],
+      "vue-mapp/*": ["src/*"],
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
