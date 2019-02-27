@@ -1,14 +1,14 @@
 {
   "name": "vue-mapp",
   "version": "0.0.1",
-  "author": "Roman Tebenkov",
+  "author": "Roman Tebenkov <mail@midrock.ru>",
   "description": "Web components based on Material Design principles",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
     "serve": "vue-cli-service serve",
     "commit": "npx git-cz",
-    "lint:fix": "eslint --ext .js,.vue --fix . && tslint --fix -p . && stylelint --fix \"src/**/*.vue\" \"src/**/*.scss\""
+    "lint:fix": "eslint --ext .js,.vue --fix . && tslint --fix -p . && stylelint --fix \"src/**/*.vue\" \"src/**/*.scss\" && prettier --list-different --write \"**/*.{js,ts,json,css,scss,md}\" "
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,7 @@
     "@vue/cli-plugin-eslint": "^3.4.0",
     "@vue/cli-plugin-typescript": "^3.4.1",
     "@vue/cli-service": "^3.4.1",
+    "@vue/eslint-config-prettier": "^4.0.1",
     "autoprefixer": "^9.4.7",
     "babel-core": "^6.26.3",
     "commitizen": "^3.0.7",
@@ -63,7 +64,7 @@
     "rollup-plugin-vue": "^4.7.1",
     "sass-loader": "^7.1.0",
     "stylelint": "^9.10.1",
-    "stylelint-config-prettier": "^4.0.0",
+    "stylelint-config-prettier": "^5.0.0",
     "stylelint-config-recess-order": "^2.0.1",
     "stylelint-config-standard": "^18.2.0",
     "ts-loader": "^5.3.3",
@@ -105,12 +106,12 @@
     ],
     "*.vue": [
       "eslint  --fix",
-      "prettier --write",
       "stylelint --fix",
       "git add"
     ],
     "*.scss": [
       "stylelint --fix",
+      "prettier --write",
       "git add"
     ]
   },
@@ -122,7 +123,9 @@
       "allowImportExportEverywhere": false
     },
     "extends": [
-      "plugin:vue/recommended"
+      "plugin:vue/recommended",
+      "prettier",
+      "prettier/standard"
     ],
     "rules": {
       "vue/html-closing-bracket-newline": [
@@ -157,10 +160,24 @@
     "/node_modules/**",
     "**/*.ts"
   ],
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "proseWrap": "never",
+    "htmlWhitespaceSensitivity": "strict",
+    "endOfLine": "lf"
+  },
   "stylelint": {
     "extends": [
       "stylelint-config-standard",
-      "stylelint-config-recess-order"
+      "stylelint-config-recess-order",
+      "stylelint-config-prettier"
     ],
     "rules": {
       "string-no-newline": null,
@@ -172,6 +189,21 @@
             "child",
             "descendant",
             "compounded"
+          ]
+        }
+      ],
+      "at-rule-empty-line-before": [
+        "always",
+        {
+          "except": [
+            "blockless-after-same-name-blockless",
+            "first-nested"
+          ],
+          "ignore": [
+            "after-comment"
+          ],
+          "ignoreAtRules": [
+            "else"
           ]
         }
       ]
