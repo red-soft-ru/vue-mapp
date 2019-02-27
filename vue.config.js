@@ -1,7 +1,7 @@
-const path = require('path')
+const path = require('path');
 
 function resolve(target) {
-  return path.join(__dirname, target)
+  return path.join(__dirname, target);
 }
 
 module.exports = {
@@ -36,4 +36,4 @@ module.exports = {
       },
     },
   },
-}
+};

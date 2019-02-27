@@ -8,24 +8,19 @@
 import { Vue, Component } from 'vue-property-decorator';
 
 @Component
-export default class App extends Vue {
-  created() {
-    console.log('adad');
-  }
-}
+export default class App extends Vue {}
 </script>
 
 <style lang="scss">
-
 :root {
   --vm-text-medium: 600;
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  color: #2c3e50;
+  text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 </style>

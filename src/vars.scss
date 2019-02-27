@@ -30,6 +30,7 @@ $shadow-23: 0 11px 14px -7px $sha, 0 23px 36px 3px $shu, 0 9px 44px 8px $shp;
 $shadow-24: 0 11px 15px -7px $sha, 0 24px 38px 3px $shu, 0 9px 46px 8px $shp;
 
 $color-text: var(--vm-color-text, $grey-900);
+$color-text-light: var(--vm-color-text-light, $grey-600);
 $color-primary: var(--vm-color-divider, $indigo);
 $color-primary-text: var(--vm-color-primary-text, #fff);
 $color-text-medium: var(--vm-text-medium, 500);

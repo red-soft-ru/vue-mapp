@@ -59,73 +59,72 @@ import { Loader } from 'vue-mapp/loader';
   name: 'vm-button',
   components: {
     'vm-icon': Icon,
-    'vm-loader': Loader,
-  },
+    'vm-loader': Loader
+  }
 })
 export default class VueMappButton extends Vue {
-
   @Prop({
     type: String,
-    default: 'button',
+    default: 'button'
   })
   type: string;
 
   @Prop({
     type: String,
     default: '',
-    validator: v => !v || /outlined|raised|filled/.test(v),
+    validator: v => !v || /outlined|raised|filled/.test(v)
   })
   theme: string;
 
   @Prop({
     type: String,
     default: '',
-    validator: v => !v || /accent|success|warning/.test(v),
+    validator: v => !v || /accent|success|warning/.test(v)
   })
   color: string;
 
   @Prop({
     type: String,
-    default: '',
+    default: ''
   })
   icon: string;
 
   @Prop({
     type: String,
     default: '',
-    validator: v => !v || /rounded/.test(v),
+    validator: v => !v || /rounded/.test(v)
   })
   corner: string;
 
   @Prop({
     type: String,
     default: '',
-    validator: v => !v || /small|large|xlarge/.test(v),
+    validator: v => !v || /small|large|xlarge/.test(v)
   })
   size: string;
 
   @Prop({
     type: Boolean,
-    default: false,
+    default: false
   })
   loading: boolean;
 
   @Prop({
     type: Boolean,
-    default: false,
+    default: false
   })
   disabled: boolean;
 
   @Prop({
     type: Boolean,
-    default: false,
+    default: false
   })
   fullWidth: boolean;
 }
 </script>
 
 <style lang="scss">
-@import 'vars';
+@import "vars";
 
 .vm-button {
   position: relative;
@@ -134,6 +133,7 @@ export default class VueMappButton extends Vue {
   justify-content: center;
   min-width: 88px;
   height: 36px;
+  min-height: 2.57142857em;
   padding: 0 0.85714286em;
   margin: 0;
   overflow: hidden;
@@ -149,11 +149,11 @@ export default class VueMappButton extends Vue {
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
+  background-color: transparent;
   border: none;
   border-radius: $border-radius;
   outline: none;
   will-change: opacity;
-  background-color: transparent;
 
   &::-moz-focus-inner {
     border: 0;
@@ -168,13 +168,13 @@ export default class VueMappButton extends Vue {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: -1;
     width: 100%;
     height: 100%;
-    content: '';
+    content: "";
     background-color: currentColor;
     opacity: 0;
     transition: opacity 16ms linear;
-    z-index: -1;
   }
 
   &:hover::before {
@@ -268,21 +268,19 @@ export default class VueMappButton extends Vue {
   }
 
   &--icon {
-    padding: 0;
-    border: none;
     min-width: auto;
     height: auto;
+    padding: 0;
+    border: none;
 
     &:not(:hover) {
-      color: $color-text;
+      color: $color-text-light;
     }
-
 
     &::before {
       content: none;
     }
   }
-
 
   &__label {
     display: flex;
@@ -296,13 +294,13 @@ export default class VueMappButton extends Vue {
   }
 
   &__icon {
-    font-size: 1.71428571em;
-    margin-left: -0.08333333em;
     margin-right: 0.33333333em;
+    margin-left: -0.08333333em;
+    font-size: 1.71428571em;
 
     &--single {
-      margin-left: 0;
       margin-right: 0;
+      margin-left: 0;
     }
   }
 
@@ -311,12 +309,11 @@ export default class VueMappButton extends Vue {
     top: 0;
     left: 0;
     z-index: 2;
-    width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
   }
 }
-
 </style>
