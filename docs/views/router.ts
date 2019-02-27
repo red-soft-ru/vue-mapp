@@ -10,5 +10,10 @@ export default new Router({
       name: 'home',
       component: () => import('vue-mapp/button/button.demo.vue'),
     },
+    {
+      path: '/divider',
+      name:  'divider',
+      component: () => import('vue-mapp/divider/divider.demo.vue'),
+    },
   ],
 });

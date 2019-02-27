@@ -149,11 +149,11 @@ export default class VueMappButton extends Vue {
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
+  background-color: transparent;
   border: none;
   border-radius: $border-radius;
   outline: none;
   will-change: opacity;
-  background-color: transparent;
 
   &::-moz-focus-inner {
     border: 0;
@@ -168,13 +168,13 @@ export default class VueMappButton extends Vue {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: -1;
     width: 100%;
     height: 100%;
     content: '';
     background-color: currentColor;
     opacity: 0;
     transition: opacity 16ms linear;
-    z-index: -1;
   }
 
   &:hover::before {
@@ -268,21 +268,19 @@ export default class VueMappButton extends Vue {
   }
 
   &--icon {
-    padding: 0;
-    border: none;
     min-width: auto;
     height: auto;
+    padding: 0;
+    border: none;
 
     &:not(:hover) {
       color: $color-text;
     }
 
-
     &::before {
       content: none;
     }
   }
-
 
   &__label {
     display: flex;
@@ -296,13 +294,13 @@ export default class VueMappButton extends Vue {
   }
 
   &__icon {
-    font-size: 1.71428571em;
-    margin-left: -0.08333333em;
     margin-right: 0.33333333em;
+    margin-left: -0.08333333em;
+    font-size: 1.71428571em;
 
     &--single {
-      margin-left: 0;
       margin-right: 0;
+      margin-left: 0;
     }
   }
 
@@ -311,11 +309,11 @@ export default class VueMappButton extends Vue {
     top: 0;
     left: 0;
     z-index: 2;
-    width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
   }
 }
 

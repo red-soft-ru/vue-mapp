@@ -8,11 +8,7 @@
 import { Vue, Component } from 'vue-property-decorator';
 
 @Component
-export default class App extends Vue {
-  created() {
-    console.log('adad');
-  }
-}
+export default class App extends Vue {}
 </script>
 
 <style lang="scss">
