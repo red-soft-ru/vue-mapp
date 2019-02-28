@@ -15,5 +15,10 @@ export default new Router({
       name: 'chip',
       component: () => import('vue-mapp/chip/chip.demo.vue'),
     },
+    {
+      path: '/divider',
+      name: 'divider',
+      component: () => import('vue-mapp/divider/divider.demo.vue'),
+    },
   ],
 });
