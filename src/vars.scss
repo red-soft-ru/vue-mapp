@@ -28,6 +28,15 @@ $shadow-21: 0 10px 13px -6px $sha, 0 21px 33px 3px $shu, 0 8px 40px 7px $shp;
 $shadow-22: 0 10px 14px -6px $sha, 0 22px 35px 3px $shu, 0 8px 42px 7px $shp;
 $shadow-23: 0 11px 14px -7px $sha, 0 23px 36px 3px $shu, 0 9px 44px 8px $shp;
 $shadow-24: 0 11px 15px -7px $sha, 0 24px 38px 3px $shu, 0 9px 46px 8px $shp;
+$shadow-line: 0 1px 0 0 $shp, 0 0 0 1px $shp;
+
+$text-large-3: 1.28571429em;
+$text-large-1: 1.07142857em;
+$text-large-2: 1.14285714em;
+$text-large-3: 1.28571429em;
+$text-small-1: 0.92857143em;
+$text-small-2: 0.85714286em;
+$text-small-3: 0.78571429em;
 
 $color-text: var(--vm-color-text, $grey-900);
 $color-text-light: var(--vm-color-text-light, $grey-600);
@@ -40,7 +49,13 @@ $color-success: var(--vm-color-success, $green-500);
 $color-warning: var(--vm-color-warning, $orange-500);
 $color-accent: var(--vm-color-accent, $red-500);
 $color-bg-dark: var(--vm-color-bg-dark, $blue-grey-50);
+$color-bg-light: var(--vm-color-bg-light, $white);
 
 $border-radius: var(--vm-border-radius, 4px);
 
-$text-small-1: 0.92857143em;
+$transition-ease-out: var(
+  --vm-transition-ease-out,
+  0.4s cubic-bezier(0.25, 0.8, 0.25, 1)
+);
+
+$card-shadow: var(--vm-card-shadow, $shadow-1);
