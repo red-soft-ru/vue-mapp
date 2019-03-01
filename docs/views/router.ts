@@ -20,5 +20,10 @@ export default new Router({
       name: 'divider',
       component: () => import('vue-mapp/divider/divider.demo.vue'),
     },
+    {
+      path: '/card',
+      name: 'card',
+      component: () => import('vue-mapp/card/card.demo.vue'),
+    },
   ],
 });
