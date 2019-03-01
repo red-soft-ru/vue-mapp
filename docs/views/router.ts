@@ -25,5 +25,10 @@ export default new Router({
       name: 'card',
       component: () => import('vue-mapp/card/card.demo.vue'),
     },
+    {
+      path: '/tag',
+      name: 'tag',
+      component: () => import('vue-mapp/tag/tag.demo.vue'),
+    },
   ],
 });
