@@ -2,16 +2,49 @@
 import { Vue, Component } from 'vue-property-decorator';
 
 @Component({
-  name: '',
+  demo: {
+    title: 'Button',
+    path: '/button',
+    group: 'input',
+  },
 })
 export default class ButtonDemo extends Vue {
-  loading: boolean = false;
-  disabled: boolean = false;
+
+  code = {
+    tag: 'vm-button',
+    attrs: [
+      {
+        name: 'theme',
+        value: 'rounded',
+      },
+    ],
+    events: [
+      {
+        name: 'click',
+        value: 'counter++',
+      }
+    ],
+    slots: [],
+  };
+
+  created() {
+    console.log(this.examples, this.$options.examples);
+  }
 }
 </script>
 
 <template>
-  <div>
+  <api-layout>
+    <api-demo
+      slot="demo"
+      component="vm-button"
+    />
+    <api-code
+      slot="code"
+      :code="$options.examples.primary.source"
+    />
+  </api-layout>
+  <!-- <div>
     <vm-button :disabled="disabled">
       Default
     </vm-button>
@@ -118,5 +151,7 @@ export default class ButtonDemo extends Vue {
       size="xlarge"
       icon="alarm"
     />
-  </div>
+  </div> -->
 </template>
+
+<example path="./examples/primary.vue" />

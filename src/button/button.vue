@@ -139,7 +139,7 @@ export default class VueMappButton extends Vue {
   overflow: hidden;
   font-family: inherit;
   font-size: 14px;
-  font-weight: $color-text-medium;
+  font-weight: $text-medium;
   color: $color-primary;
   text-align: center;
   text-decoration: none;
@@ -271,11 +271,8 @@ export default class VueMappButton extends Vue {
     min-width: auto;
     height: auto;
     padding: 0;
+    color: inherit;
     border: none;
-
-    &:not(:hover) {
-      color: $color-text-light;
-    }
 
     &::before {
       content: none;
@@ -287,6 +284,7 @@ export default class VueMappButton extends Vue {
     flex: 1 1 auto;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
 
     &--hidden {
       visibility: hidden;
