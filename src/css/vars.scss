@@ -31,13 +31,19 @@ $shadow-24: 0 11px 15px -7px $sha, 0 24px 38px 3px $shu, 0 9px 46px 8px $shp;
 
 $color-text: var(--vm-color-text, $grey-900);
 $color-text-light: var(--vm-color-text-light, $grey-600);
-$color-primary: var(--vm-color-divider, $indigo);
+$color-primary: var(--vm-color-primary, $indigo);
 $color-primary-text: var(--vm-color-primary-text, #fff);
-$color-text-medium: var(--vm-text-medium, 500);
 $color-divider: var(--vm-color-divider, $grey-300);
 $color-disabled: var(--vm-color-disabled, $grey-500);
 $color-success: var(--vm-color-success, $green-500);
 $color-warning: var(--vm-color-warning, $orange-500);
 $color-accent: var(--vm-color-accent, $red-500);
+
+$bg-default: var(--vm-bg-default, $grey-50);
+$bg-overlay: var(--vm-bg-overlay, rgba(0,0,0,0.48));
+
+$text-medium: var(--vm-text-medium, 500);
+$text-regular: var(--vm-text-regular, 400);
+$text-light: var(--vm-text-light, 300);
 
 $border-radius: var(--vm-border-radius, 4px);
