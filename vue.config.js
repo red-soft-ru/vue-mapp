@@ -1,4 +1,6 @@
 const path = require('path');
+const merge = require('deepmerge');
+
 
 function resolve(target) {
   return path.join(__dirname, target);
@@ -14,11 +16,20 @@ module.exports = {
   },
   configureWebpack: {
     name: 'Vue Mapp Demo',
+    module: {
+      rules: [
+        {
+          resourceQuery: /blockType=example/,
+          loader: require.resolve('./loader.js')
+        }
+      ]
+    },
     resolve: {
       extensions: ['.ts', '.vue', 'index.ts'],
       alias: {
         '@vmsrc': resolve('src'),
         'vue-mapp': resolve('src'),
+        '#': resolve('docs'),
       },
     },
   },
@@ -32,7 +43,7 @@ module.exports = {
         ],
       },
       sass: {
-        includePaths: ['./src'],
+        includePaths: ['./src/css'],
       },
     },
   },

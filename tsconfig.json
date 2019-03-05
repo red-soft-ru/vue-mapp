@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@vmsrc/*": ["src/*"],
-      "vue-mapp/*": ["src/*"]
+      "vue-mapp/*": ["src/*"],
+      "#/*": ["docs/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },

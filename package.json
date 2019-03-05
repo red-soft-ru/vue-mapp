@@ -35,6 +35,7 @@
   "devDependencies": {
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
+    "@typescript-eslint/parser": "^1.4.2",
     "@vue/cli-plugin-babel": "^3.4.1",
     "@vue/cli-plugin-eslint": "^3.4.0",
     "@vue/cli-plugin-typescript": "^3.4.1",
@@ -42,6 +43,7 @@
     "@vue/eslint-config-prettier": "^4.0.1",
     "autoprefixer": "^9.4.7",
     "babel-core": "^6.26.3",
+    "clipboard": "^2.0.4",
     "commitizen": "^3.0.7",
     "cross-env": "^5.2.0",
     "cssnano": "^4.1.10",
@@ -51,6 +53,7 @@
     "lint-staged": "^8.1.4",
     "lodash": "^4.17.11",
     "node-sass": "^4.11.0",
+    "prismjs": "^1.15.0",
     "rollup-plugin-analyzer": "^3.0.0",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-css-only": "^1.0.0",
@@ -74,10 +77,12 @@
     "typescript-estree": "^18.1.0",
     "vue": "^2.6.7",
     "vue-eslint-parser": "^6.0.2",
+    "vue-loader": "^15.7.0",
     "vue-property-decorator": "^7.3.0",
     "vue-router": "^3.0.2",
     "vue-template-compiler": "^2.6.7",
-    "vuex": "^3.1.0"
+    "vuex": "^3.1.0",
+    "vuex-class": "^0.3.1"
   },
   "peerDependencies": {
     "vue": "^2.6.7",
@@ -118,14 +123,12 @@
   "eslintConfig": {
     "parser": "vue-eslint-parser",
     "parserOptions": {
-      "parser": "typescript-eslint-parser",
+      "parser": "@typescript-eslint/parser",
       "sourceType": "module",
       "allowImportExportEverywhere": false
     },
     "extends": [
-      "plugin:vue/recommended",
-      "prettier",
-      "prettier/standard"
+      "plugin:vue/recommended"
     ],
     "rules": {
       "vue/html-closing-bracket-newline": [
@@ -144,6 +147,24 @@
           ]
         }
       ],
+      "vue/attributes-order": [
+        "warn",
+        {
+          "order": [
+            "EVENTS",
+            "DEFINITION",
+            "LIST_RENDERING",
+            "CONDITIONALS",
+            "RENDER_MODIFIERS",
+            "GLOBAL",
+            "UNIQUE",
+            "TWO_WAY_BINDING",
+            "OTHER_DIRECTIVES",
+            "OTHER_ATTR",
+            "CONTENT"
+          ]
+        }
+      ],
       "vue/html-closing-bracket-spacing": [
         "error",
         {
@@ -152,6 +173,7 @@
           "selfClosingTag": "always"
         }
       ],
+      "vue/require-component-is": 0,
       "no-console": "error",
       "no-useless-escape": 0
     }
