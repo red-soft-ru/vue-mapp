@@ -31,9 +31,14 @@ export default new Router({
       component: () => import('vue-mapp/tag/tag.demo.vue'),
     },
     {
-      path: '/',
+      path: '/checkbox',
       name: 'checkbox',
       component: () => import('vue-mapp/checkbox/checkbox.demo.vue'),
+    },
+    {
+      path: '/radio',
+      name: 'radio',
+      component: () => import('vue-mapp/radio/radio.demo.vue'),
     },
   ],
 });

@@ -6,6 +6,8 @@ import Divider from '@vmsrc/divider';
 import Card from '@vmsrc/card';
 import Tag from '@vmsrc/tag';
 import Checkbox from '@vmsrc/checkbox';
+import Radio from '@vmsrc/radio';
+import Field from '@vmsrc/field';
 
 export function install(Vue, options) {
   Vue.use(Button);
@@ -16,6 +18,8 @@ export function install(Vue, options) {
   Vue.use(Card);
   Vue.use(Tag);
   Vue.use(Checkbox);
+  Vue.use(Radio);
+  Vue.use(Field);
 }
 
 const plugin = {
