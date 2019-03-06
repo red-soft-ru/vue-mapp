@@ -1,0 +1,36 @@
+.vm-checkbox {
+  .vm-checkbox__icon {
+    border-color: $color-text-light;
+
+    .primary-box & {
+      border-color: $color-text;
+    }
+  }
+
+  &.is--readonly,
+  .is-readonly & {
+    cursor: default;
+
+    .vm-checkbox__icon {
+      opacity: 0.8;
+    }
+  }
+
+  &.is--checked {
+    .vm-checkbox__icon {
+      background: $color-primary;
+
+      .primary-box & {
+        background: $color-primary;
+      }
+    }
+
+    .vm-checkbox__checkmark {
+      border-color: $color-primary-text;
+
+      .primary-box & {
+        border-color: $color-primary;
+      }
+    }
+  }
+}
