@@ -40,5 +40,10 @@ export default new Router({
       name: 'radio',
       component: () => import('vue-mapp/radio/radio.demo.vue'),
     },
+    {
+      path: '/toggle',
+      name: 'toggle',
+      component: () => import('vue-mapp/toggle/toggle.demo.vue'),
+    },
   ],
 });

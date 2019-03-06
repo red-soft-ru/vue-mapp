@@ -1,23 +1,3 @@
-<template>
-  <div
-    :disabled="status === 'disabled'"
-    :class="{
-      'is--checked': emitValue
-    }"
-    @click="click"
-    class="vm-radio"
-  >
-    <div class="vm-radio__icon" />
-    <div
-      v-if="$slots.default || label"
-      class="vm-radio__label"
-    >
-      {{ label }}
-      <slot />
-    </div>
-  </div>
-</template>
-
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import InputElement from '../input.mixin';
@@ -67,6 +47,26 @@ export default class VueMappRadio extends InputElement {
   }
 }
 </script>
+
+<template>
+  <div
+    :disabled="status === 'disabled'"
+    :class="{
+      'is--checked': emitValue
+    }"
+    @click="click"
+    class="vm-radio"
+  >
+    <div class="vm-radio__icon" />
+    <div
+      v-if="$slots.default || label"
+      class="vm-radio__label"
+    >
+      {{ label }}
+      <slot />
+    </div>
+  </div>
+</template>
 
 <style lang="scss">
 @import 'vars';

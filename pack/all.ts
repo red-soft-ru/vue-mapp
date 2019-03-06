@@ -8,6 +8,7 @@ import Tag from '@vmsrc/tag';
 import Checkbox from '@vmsrc/checkbox';
 import Radio from '@vmsrc/radio';
 import Field from '@vmsrc/field';
+import Toggle from '@vmsrc/toggle';
 
 export function install(Vue, options) {
   Vue.use(Button);
@@ -20,6 +21,7 @@ export function install(Vue, options) {
   Vue.use(Checkbox);
   Vue.use(Radio);
   Vue.use(Field);
+  Vue.use(Toggle);
 }
 
 const plugin = {

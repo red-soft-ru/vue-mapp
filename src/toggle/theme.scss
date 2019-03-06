@@ -1,0 +1,19 @@
+.vm-toggle {
+  &__thumb {
+    background: $color-divider;
+
+    &::after {
+      background: $color-bg;
+    }
+  }
+
+  &.is--checked {
+    .vm-toggle__thumb {
+      background: $color-text-dark;
+
+      &::after {
+        background: $color-primary;
+      }
+    }
+  }
+}

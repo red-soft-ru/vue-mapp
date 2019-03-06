@@ -40,6 +40,7 @@ $text-small-3: 0.78571429em;
 
 $color-text: var(--vm-color-text, $grey-900);
 $color-text-light: var(--vm-color-text-light, $grey-600);
+$color-text-dark: var(--vm-color-text-dark, $indigo-100);
 $color-primary: var(--vm-color-divider, $indigo);
 $color-primary-text: var(--vm-color-primary-text, #fff);
 $color-text-medium: var(--vm-text-medium, 500);
@@ -48,6 +49,7 @@ $color-disabled: var(--vm-color-disabled, $grey-500);
 $color-success: var(--vm-color-success, $green-500);
 $color-warning: var(--vm-color-warning, $orange-500);
 $color-accent: var(--vm-color-accent, $red-500);
+$color-bg: var(--vm-color-bg, $grey-50);
 $color-bg-dark: var(--vm-color-bg-dark, $blue-grey-50);
 $color-bg-light: var(--vm-color-bg-light, $white);
 
@@ -59,3 +61,4 @@ $transition-ease-out: var(
 );
 
 $card-shadow: var(--vm-card-shadow, $shadow-1);
+
