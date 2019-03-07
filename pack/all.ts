@@ -4,6 +4,10 @@ import Icon from '@vmsrc/icon';
 import Loader from '@vmsrc/loader';
 import Header from '@vmsrc/header';
 import Modal from '@vmsrc/modal';
+import Chip from '@vmsrc/chip';
+import Divider from '@vmsrc/divider';
+import Card from '@vmsrc/card';
+import Tag from '@vmsrc/tag';
 
 export default (Vue, options: any = {}) => {
   Vue.use(Button, options.button);
@@ -11,4 +15,8 @@ export default (Vue, options: any = {}) => {
   Vue.use(Loader);
   Vue.use(Header);
   Vue.use(Modal);
+  Vue.use(Chip);
+  Vue.use(Divider);
+  Vue.use(Card);
+  Vue.use(Tag);
 };
