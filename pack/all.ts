@@ -10,6 +10,7 @@ import Radio from '@vmsrc/radio';
 import Field from '@vmsrc/field';
 import Toggle from '@vmsrc/toggle';
 import Option from '@vmsrc/option';
+import Switch from '@vmsrc/switch';
 
 export function install(Vue, options) {
   Vue.use(Button);
@@ -24,6 +25,7 @@ export function install(Vue, options) {
   Vue.use(Field);
   Vue.use(Toggle);
   Vue.use(Option);
+  Vue.use(Switch);
 }
 
 const plugin = {

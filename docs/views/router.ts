@@ -45,5 +45,10 @@ export default new Router({
       name: 'toggle',
       component: () => import('vue-mapp/toggle/toggle.demo.vue'),
     },
+    {
+      path: '/switch',
+      name: 'switch',
+      component: () => import('vue-mapp/switch/switch.demo.vue'),
+    },
   ],
 });

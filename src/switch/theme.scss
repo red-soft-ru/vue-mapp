@@ -1,0 +1,8 @@
+.vm-switch {
+  .vm-option {
+    &.is--selected {
+      color: $color-primary-text;
+      background: $color-primary;
+    }
+  }
+}
