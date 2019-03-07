@@ -1,6 +1,5 @@
 import InputElement from './input.mixin';
-// import VueMappOption from './option/index__';
-import VueMappOption from './option/component.vue';
+import VueMappOption from './option/option.vue';
 
 export type VMInputState = 'init' | 'disabled' | 'readonly';
 
