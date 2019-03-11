@@ -52,10 +52,12 @@ $color-bg-light: var(--vm-color-bg-light, $white);
 
 $bg-default: var(--vm-bg-default, $grey-50);
 $bg-overlay: var(--vm-bg-overlay, rgba(0, 0, 0, 0.48));
+$bg-action-hover: var(--vm-bg-hover, rgba(0, 0, 0, 0.1));
 
 $text-medium: var(--vm-text-medium, 500);
 $text-regular: var(--vm-text-regular, 400);
 $text-light: var(--vm-text-light, 300);
+$text-bold: var(--vm-text-bold, 600);
 
 $border-radius: var(--vm-border-radius, 4px);
 

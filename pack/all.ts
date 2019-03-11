@@ -8,6 +8,7 @@ import Chip from '@vmsrc/chip';
 import Divider from '@vmsrc/divider';
 import Card from '@vmsrc/card';
 import Tag from '@vmsrc/tag';
+import Box from '@vmsrc/box';
 
 export default (Vue, options: any = {}) => {
   Vue.use(Button, options.button);
@@ -19,4 +20,5 @@ export default (Vue, options: any = {}) => {
   Vue.use(Divider);
   Vue.use(Card);
   Vue.use(Tag);
+  Vue.use(Box);
 };
