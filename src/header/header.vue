@@ -14,13 +14,23 @@
       <slot name="trigger" />
     </div>
 
-    <h6 class="vm-header__title">
+    <h6
+      v-if="$slots.title || title"
+      :class="[
+        'vm-header__title',
+        size && 'vm-header__title--' + size,
+      ]"
+    >
       <slot name="title" />
       {{ title }}
     </h6>
 
-    <div class="vm-header__icons">
-      <slot name="icons" />
+    <div class="vm-header__center">
+      <slot name="center" />
+    </div>
+
+    <div class="vm-header__body">
+      <slot />
     </div>
   </div>
 </template>
@@ -40,7 +50,7 @@ export default class VmHeader extends Vue {
   @Prop({
     type: String,
     default: '',
-    validator: v => !v || /small|medium|large/.test(v)
+    validator: v => !v || /xsmall|small/.test(v)
   })
   size: string;
 
@@ -66,9 +76,12 @@ export default class VmHeader extends Vue {
 .vm-header {
   z-index: 1;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   width: 100%;
   height: 64px;
+  padding-right: 20px;
+  padding-left: 20px;
 
   &--primary {
     color: $color-primary-text;
@@ -85,9 +98,24 @@ export default class VmHeader extends Vue {
     box-shadow: $shadow-2;
   }
 
+  &--xsmall {
+    height: 40px;
+  }
+
+  &--small {
+    height: 56px;
+  }
+
   &__title {
-    flex-grow: 1;
     text-align: left;
+
+    &--xsmall {
+      font-size: 16px;
+    }
+
+    &--small {
+      font-size: 18px;
+    }
 
     > a {
       color: inherit;
@@ -95,10 +123,22 @@ export default class VmHeader extends Vue {
     }
   }
 
+  &__center {
+    flex-grow: 1;
+  }
+
+  &__body {
+
+    > .vm-button:last-child {
+      margin-right: -8px;
+    }
+  }
+
   &__trigger {
     position: relative;
     flex-shrink: 0;
-    width: 64px;
+    margin-right: 16px;
+    margin-left: -4px;
   }
 }
 </style>
