@@ -40,9 +40,10 @@ $text-small-3: 0.78571429em;
 
 $color-text: var(--vm-color-text, $grey-900);
 $color-text-light: var(--vm-color-text-light, $grey-600);
-$color-text-dark: var(--vm-color-text-dark, $indigo-100);
+$color-text-dark: var(--vm-color-text-dark, $black);
 $color-primary: var(--vm-color-divider, $indigo);
 $color-primary-text: var(--vm-color-primary-text, #fff);
+$color-primary-text-dark: var(--vm-color-text-dark, $indigo-100);
 $color-text-medium: var(--vm-text-medium, 500);
 $color-divider: var(--vm-color-divider, $grey-300);
 $color-disabled: var(--vm-color-disabled, $grey-500);
@@ -61,4 +62,3 @@ $transition-ease-out: var(
 );
 
 $card-shadow: var(--vm-card-shadow, $shadow-1);
-

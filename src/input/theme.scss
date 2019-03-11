@@ -1,0 +1,79 @@
+.vm-input {
+  ::placeholder {
+    color: $color-text-dark;
+  }
+
+  &[data-vm-check='error'] {
+    .vm-input__message {
+      color: $color-accent;
+      opacity: 1;
+    }
+  }
+
+  &__right {
+    .vm-button:not(:hover) {
+      color: $color-text-light;
+    }
+  }
+
+  &__divider {
+    background: $color-divider;
+
+    &-loader {
+      background: $color-warning;
+    }
+  }
+
+  &.is--focused {
+    .vm-input__divider {
+      background: $color-primary;
+    }
+
+    // .vm-input__label {
+    //   color: $color-primary;
+    // }
+  }
+
+  &__label {
+    color: $color-text-light;
+
+    span {
+      color: $color-accent;
+    }
+
+    .vm-input.is--focused {
+      color: $color-primary;
+    }
+
+    .vm-input.is--box.is--expanded & {
+      color: $color-text-light;
+    }
+
+    .vm-input.is--box.is--expanded.is--focused & {
+      color: $color-primary;
+    }
+  }
+
+  &__container {
+    path {
+      stroke: $color-divider;
+
+      .vm-input.is--focused & {
+        stroke: $color-primary;
+      }
+    }
+  }
+
+  &[disabled] {
+    .vm-input__divider {
+      background: transparent;
+      border-color: $color-text-light;
+    }
+  }
+
+  &.is--error {
+    .vm-input__divider {
+      background: $color-accent;
+    }
+  }
+}

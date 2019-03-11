@@ -66,7 +66,6 @@ export default class VueMappOption extends InputElement {
     removeFromArray(this.container.options, this);
   }
 }
-
 </script>
 
 <template>
@@ -99,7 +98,6 @@ export default class VueMappOption extends InputElement {
   user-select: none;
 
   &__label {
-    // @apply --text-nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

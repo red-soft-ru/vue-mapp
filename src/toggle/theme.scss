@@ -9,7 +9,7 @@
 
   &.is--checked {
     .vm-toggle__thumb {
-      background: $color-text-dark;
+      background: $color-primary-text-dark;
 
       &::after {
         background: $color-primary;

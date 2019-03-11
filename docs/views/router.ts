@@ -50,5 +50,10 @@ export default new Router({
       name: 'switch',
       component: () => import('vue-mapp/switch/switch.demo.vue'),
     },
+    {
+      path: '/input',
+      name: 'input',
+      component: () => import('vue-mapp/input/input.demo.vue'),
+    },
   ],
 });

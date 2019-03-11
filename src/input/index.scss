@@ -1,0 +1,310 @@
+@import 'vars';
+@import './theme.scss';
+
+.vm-input {
+  position: relative;
+  width: 100%;
+  padding-top: 14px;
+  margin-bottom: 16px;
+  font-size: 14px;
+
+  input {
+    z-index: 1;
+    display: block;
+    flex: 1 1;
+    flex-grow: 1;
+    min-height: 32px;
+    padding: 0;
+    overflow: hidden;
+    font-family: inherit;
+    font-size: 1em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: none;
+    border: none;
+    size: 100%;
+
+    &[disabled] {
+      opacity: 1;
+    }
+
+    &[readonly] {
+      &:hover {
+        text-overflow: initial;
+      }
+    }
+
+    &::placeholder {
+      opacity: 0.54;
+    }
+
+    &::-webkit-input-placeholder {
+      font-size: 1em;
+      text-shadow: none;
+      -webkit-text-fill-color: initial;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      size: 100%;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: calc(50% - 1.2em / 2);
+    top: 8px;
+    display: block;
+    overflow: hidden;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+    will-change: opacity, top;
+
+    &.is--noanimate {
+      animation: none !important;
+    }
+
+    &.vm-input.is--large-1 {
+      top: 7px;
+    }
+
+    &.vm-input.is-box.is--expanded {
+      top: -7px;
+      animation: inputlabelbox 0.1s cubic-bezier(0.25, 0.5, 0.8, 1);
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__outline {
+    fill: transparent;
+    stroke-width: 1px;
+
+    .vm-input.is--box.is--focused & {
+      stroke-width: 2px;
+    }
+  }
+
+  &__left,
+  &__right {
+    z-index: 1;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: row;
+    height: 100%;
+  }
+
+  &__left {
+    margin-right: 8px;
+  }
+
+  &__right {
+    margin-left: 12px;
+
+    button {
+      width: 100%;
+      height: auto;
+      padding: 8px;
+
+      &::after {
+        content: none !important;
+      }
+    }
+
+    .vm-icon {
+      font-size: 22px;
+    }
+
+    .vm-loader {
+      width: 100%;
+
+      &__spin {
+        border-width: 2px;
+        size: 22px;
+      }
+    }
+  }
+
+  &__divider {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+
+    &-loader {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      width: 20%;
+      height: 2px;
+      animation: indeterminate 1.5s infinite cubic-bezier(0.25, 0.5, 0.8, 1);
+    }
+  }
+
+  &__message {
+    min-height: 18px;
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 18px;
+    opacity: 0.8;
+
+    &.is--nowrap {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    size: 32px;
+  }
+
+  &[disabled] {
+    .vm-input__divider {
+      border-style: dashed;
+      border-width: 0 0 1px;
+    }
+  }
+
+  &.is--focused {
+    .vm-input__divider {
+      height: 2px;
+    }
+  }
+
+  &.is--expanded {
+    .vm-input__label {
+      top: -12px;
+      font-size: 0.85714em;
+      font-weight: 500;
+      line-height: 1.2em;
+      animation: inputlabel 0.1s cubic-bezier(0.25, 0.5, 0.8, 1);
+    }
+  }
+
+  &.is--box {
+    .vm-input__container {
+      height: 56px;
+      border-radius: 4px;
+    }
+
+    .vm-input__right {
+      width: 56px;
+    }
+
+    .vm-input__label {
+      top: 20px;
+      left: 16px;
+    }
+
+    .vm-input__main {
+      padding: 8px;
+    }
+
+    .vm-input__message {
+      padding: 0 16px;
+    }
+
+    // &.is--expanded .vm-input__label {
+    //   top: -7px;
+    //   animation: inputlabelbox 0.1s cubic-bezier(0.25, 0.5, 0.8, 1);
+    // }
+
+    input {
+      padding: 0 8px;
+    }
+  }
+
+  &.is--large-1 {
+    font-size: 1rem;
+
+    // .vm-input__label {
+    //   top: 7px;
+    // }
+
+    &.is--expanded .vm-input__label {
+      top: -12px;
+      font-size: 0.75rem;
+    }
+
+    &.is--box {
+      font-size: 1.14285714em;
+
+      .vm-input__label {
+        top: 19px;
+      }
+
+      &.is--expanded .vm-input__label {
+        top: -8px;
+        font-size: 0.85714em;
+      }
+    }
+  }
+
+  &.is--large-2 {
+    font-size: 1.28571429em;
+  }
+}
+
+@keyframes indeterminate {
+  0% {
+    left: -100%;
+    width: 50%;
+  }
+  100% {
+    left: 100%;
+    width: 50%;
+  }
+}
+
+@keyframes inputlabel {
+  0% {
+    top: -10px;
+    opacity: 0;
+  }
+
+  100% {
+    top: -12px;
+    opacity: 0.8;
+  }
+}
+
+@keyframes inputlabelbox {
+  0% {
+    top: -4px;
+    opacity: 0;
+  }
+
+  100% {
+    top: -6px;
+    opacity: 0.8;
+  }
+}

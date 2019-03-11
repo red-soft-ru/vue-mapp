@@ -2,7 +2,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component({
-    name: 'vm-chip'
+  name: 'vm-chip'
 })
 export default class VueMappChip extends Vue {
 
@@ -53,8 +53,9 @@ export default class VueMappChip extends Vue {
     border-radius: 28px;
 
     &__label {
-      // TODO mixin (branch card)
-      // @apply --text-nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     &__close {
