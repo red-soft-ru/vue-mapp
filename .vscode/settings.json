@@ -1,5 +1,9 @@
 {
+  "vetur.validation.style": false,
   "vetur.grammar.customBlocks": {
     "example": "ts"
-  }
+  },
+  "css.validate": false,
+  "scss.validate": false,
+  "stylelint.enable": true
 }

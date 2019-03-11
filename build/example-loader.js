@@ -17,7 +17,6 @@ module.exports = function(source, map) {
   source = fs.readFileSync(filePath, 'utf8');
 
 	const code = `
-		import Vue from 'vue';
 		// import ExampleLoading from 'docs/components/ExampleLoading';
 
 		export default function (Component) {
@@ -27,12 +26,11 @@ module.exports = function(source, map) {
 				delay: 0,
 			});
 
-			Vue.component('${fileName}', asyncComponent);
-
 			Component.options.examples = Component.options.examples || {};
 			Component.options.examples['${fileName}'] = {
 				name: '${fileName}',
-				source: ${JSON.stringify(source)},
+        source: ${JSON.stringify(source)},
+        component: asyncComponent,
 			};
 		}
 	`;

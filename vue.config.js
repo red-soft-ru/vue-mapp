@@ -20,7 +20,7 @@ module.exports = {
       rules: [
         {
           resourceQuery: /blockType=example/,
-          loader: require.resolve('./loader.js')
+          loader: require.resolve('./build/example-loader.js')
         }
       ]
     },
@@ -37,6 +37,7 @@ module.exports = {
     loaderOptions: {
       postcss: {
         plugins: [
+          require('tailwindcss')(`./docs/tailwind.js`),
           require('autoprefixer')({
             grid: true,
           }),
