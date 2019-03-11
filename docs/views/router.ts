@@ -60,5 +60,10 @@ export default new Router({
       name: 'textarea',
       component: () => import('vue-mapp/textarea/textarea.demo.vue'),
     },
+    {
+      path: '/popup',
+      name: 'popup',
+      component: () => import('vue-mapp/popup/popup.demo.vue'),
+    },
   ],
 });

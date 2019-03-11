@@ -50,7 +50,7 @@ export default class VueMappTextarea extends InputElement {
       this.$nextTick(() => {
         this.updateAutosize();
         this.drawBox();
-      })
+      });
     }
   }
 
