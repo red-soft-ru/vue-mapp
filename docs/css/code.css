@@ -1,69 +1,77 @@
 @import 'vars';
 
-$token-comment:           $text-light;
-$token-punctuation:       $text-light;
+$token-comment:           $color-text-light;
+$token-punctuation:       $color-text-light;
 $token-tag:               #2973b7;
 $token-string:            #2973b7;
 $token-operator:          #a67f59;
-$token-keyword:           $color-success;
-$token-function:          #e96900;
+$token-keyword:           $purple;
+$token-function:          $blue-600;
 $token-variable:          #e90;
-
 
 .token {
 
-    &.comment,
-    &.prolog,
-    &.doctype,
-    &.cdata {
-        color: $token-comment;
-    }
+  &.comment,
+  &.prolog,
+  &.doctype,
+  &.cdata {
+    color: $token-comment;
+  }
 
-    &.punctuation {
-        color: $token-punctuation;
-    }
-
-    &.property,
-    &.tag,
-    &.boolean,
-    &.number,
-    &.constant,
-    &.symbol,
-    &.deleted {
-        color: $token-tag;
-    }
-
-    &.selector,
-    &.attr-name,
-    &.string,
-    &.char,
-    &.builtin,
-    &.inserted {
-        color: $token-string;
-    }
+  &.punctuation {
+    color: $token-punctuation;
+  }
 
 
-    &.operator,
-    &.entity,
-    &.url,
-    .language-css &.string,
-    .style &.string {
-        color: $token-operator;
-    }
+  &.tag,
+  &.boolean,
+  &.number,
+  &.constant,
+  &.symbol,
+  &.deleted {
+    color: $token-tag;
+  }
 
-    &.atrule,
-    &.attr-value,
-    &.keyword {
-        color: $token-keyword;
-    }
+  &.selector {
+    color: $orange-700;
+  }
 
-    &.function {
-        color: $token-function;
-    }
 
-    &.regex,
-    &.important,
-    &.variable {
-        color: $token-variable;
-    }
+  &.attr-name,
+  &.string,
+  &.char,
+  &.inserted {
+    color: $token-string;
+  }
+
+  &.builtin {
+    color: $yellow-800;
+  }
+
+  &.operator,
+  &.entity,
+  &.url,
+  .language-css &.string,
+  .style &.string {
+    color: $token-operator;
+  }
+
+  &.atrule,
+  &.keyword {
+    color: $token-keyword;
+  }
+
+  &.attr-value {
+    color: $green;
+  }
+
+  &.function {
+      color: $token-function;
+  }
+
+  &.regex,
+  &.important,
+  &.variable {
+      color: $token-variable;
+  }
 }

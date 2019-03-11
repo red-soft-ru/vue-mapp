@@ -2,26 +2,57 @@
   <div :class="$style.root">
     <div :class="$style.left">
       <div :class="$style.demo">
-        <slot name="demo" />
+        <slot
+          v-if="$slots.demo"
+          name="demo"
+        />
+        <api-demo
+          v-else
+          :component="example.component"
+        />
       </div>
 
-      <div :class="$style.code">
-        <slot name="code" />
-      </div>
+      <api-code
+        :class="$style.code"
+        :code="example.source"
+      />
     </div>
 
     <div :class="$style.params">
       <slot name="params" />
+      <api-examples
+        :examples="examples"
+        @select="onSelectExample"
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class ApiLayout extends Vue {
 
+  exampleKey: string = '';
+
+  @Prop({
+    type: Object,
+    default: () => ({}),
+  })
+  examples: object;
+
+  get example() {
+    if (this.exampleKey) {
+      return this.examples[this.exampleKey];
+    } else {
+      return {};
+    }
+  }
+
+  onSelectExample(key) {
+    this.exampleKey = key;
+  }
 }
 </script>
 
@@ -51,7 +82,8 @@ export default class ApiLayout extends Vue {
 }
 
 .demo, .code {
-  flex-basis: 50%;
+  flex-shrink: 0;
+  height: 50%;
   overflow: auto;
 }
 

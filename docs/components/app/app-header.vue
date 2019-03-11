@@ -1,5 +1,8 @@
 <template>
-  <vm-header theme="shadow">
+  <vm-header
+    color="primary"
+    theme="shadow"
+  >
     <vm-button
       slot="trigger"
       @click="showMenu"

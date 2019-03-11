@@ -5,19 +5,26 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 export default class ApiDemo extends Vue {
 
   @Prop({
-    type: String,
+    type: [Function, String],
     default: '',
   })
-  component: string;
+  component: any;
 }
 </script>
 
 <template>
-  <div>Demo</div>
+  <div :class="$style.root">
+    <component :is="component" />
+  </div>
 </template>
 
-<style lang="postcss">
+<style lang="postcss" module>
 .root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  height: 100%;
 }
 </style>
