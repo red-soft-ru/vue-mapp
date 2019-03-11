@@ -1,5 +1,6 @@
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+import { Component } from 'vue-property-decorator';
+import DemoRoute from '@vmsrc/demo.mixin';
 
 @Component({
   demo: {
@@ -8,42 +9,15 @@ import { Vue, Component } from 'vue-property-decorator';
     group: 'input',
   },
 })
-export default class ButtonDemo extends Vue {
+export default class ButtonDemo extends DemoRoute {
 
-  code = {
-    tag: 'vm-button',
-    attrs: [
-      {
-        name: 'theme',
-        value: 'rounded',
-      },
-    ],
-    events: [
-      {
-        name: 'click',
-        value: 'counter++',
-      }
-    ],
-    slots: [],
-  };
-
-  created() {
-    console.log(this.examples, this.$options.examples);
-  }
 }
 </script>
 
 <template>
-  <api-layout>
-    <api-demo
-      slot="demo"
-      component="vm-button"
-    />
-    <api-code
-      slot="code"
-      :code="$options.examples.primary.source"
-    />
-  </api-layout>
+  <api-layout
+    :examples="examples"
+  />
   <!-- <div>
     <vm-button :disabled="disabled">
       Default
@@ -155,3 +129,4 @@ export default class ButtonDemo extends Vue {
 </template>
 
 <example path="./examples/primary.vue" />
+<example path="./examples/with-loader.vue" />

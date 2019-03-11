@@ -8,14 +8,16 @@
       theme && 'vm-button--' + theme,
       corner && 'vm-button--' + corner,
       color && 'vm-button--' + color,
-      size && 'vm-button--' + size,
+      size && !icon && 'vm-button--' + size,
+      icon && 'vm-button--icon-' + size,
       {
         'vm-button--full': fullWidth,
         'vm-button--filled': /raised/.test(theme),
-        'vm-button--icon': !$slots.default,
+        'vm-button--icon': icon,
       }
     ]"
     v-on="$listeners"
+    @click="onClick"
   >
     <span
       v-if="loading"
@@ -79,7 +81,7 @@ export default class VueMappButton extends Vue {
   @Prop({
     type: String,
     default: '',
-    validator: v => !v || /accent|success|warning/.test(v)
+    validator: v => !v || /accent|success|warning|primary/.test(v)
   })
   color: string;
 
@@ -120,6 +122,11 @@ export default class VueMappButton extends Vue {
     default: false
   })
   fullWidth: boolean;
+
+  onClick() {
+    // remove focus state after click
+    (this.$el as HTMLInputElement).blur();
+  }
 }
 </script>
 
@@ -135,7 +142,7 @@ export default class VueMappButton extends Vue {
   height: 36px;
   min-height: 2.57142857em;
   padding: 0 0.85714286em;
-  margin: 0;
+  margin: 8px;
   overflow: hidden;
   font-family: inherit;
   font-size: 14px;
@@ -174,7 +181,7 @@ export default class VueMappButton extends Vue {
     content: "";
     background-color: currentColor;
     opacity: 0;
-    transition: opacity 16ms linear;
+    transition: opacity 64ms linear;
   }
 
   &:hover::before {
@@ -193,16 +200,8 @@ export default class VueMappButton extends Vue {
     opacity: 0;
   }
 
-  &--success {
-    color: $color-success;
-  }
-
-  &--warning {
-    color: $color-warning;
-  }
-
-  &--accent {
-    color: $color-accent;
+  & + & {
+    margin-left: 0;
   }
 
   &--filled {
@@ -255,6 +254,7 @@ export default class VueMappButton extends Vue {
     min-width: auto;
     height: 28px;
     font-size: 12px;
+    font-weight: $text-bold;
   }
 
   &--large {
@@ -268,15 +268,50 @@ export default class VueMappButton extends Vue {
   }
 
   &--icon {
+    width: 40px;
     min-width: auto;
-    height: auto;
-    padding: 0;
+    height: 40px;
+    margin: 0;
     color: inherit;
     border: none;
+    border-radius: 50%;
+    opacity: .8;
 
-    &::before {
-      content: none;
+    &:hover {
+      opacity: 1;
     }
+
+    &--small {
+      min-width: auto;
+      height: 28px;
+      font-size: 12px;
+    }
+
+    &--large {
+      height: 44px;
+      font-size: 14px;
+    }
+
+    &--xlarge {
+      height: 52px;
+      font-size: 16px;
+    }
+  }
+
+  &--success {
+    color: $color-success;
+  }
+
+  &--warning {
+    color: $color-warning;
+  }
+
+  &--accent {
+    color: $color-accent;
+  }
+
+  &--primary {
+    color: $color-primary;
   }
 
   &__label {

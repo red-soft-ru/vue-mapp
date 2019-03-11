@@ -1,9 +1,11 @@
 <template>
   <vm-button
     @click="onClick"
+    :loading="loading"
     color="success"
+    theme="outlined"
   >
-    Success Button
+    Loading
   </vm-button>
 </template>
 
@@ -11,7 +13,9 @@
 import { Vue, Component } from 'vue-property-decorator';
 
 @Component
-export default class ButtonPrimaryDemo extends Vue {
+export default class ButtonWithLoader extends Vue {
+
+  loading: boolean = true;
 
   onClick() {
     // console.warn('Clicked');

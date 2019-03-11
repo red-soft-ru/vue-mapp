@@ -19,3 +19,5 @@ export default (Vue, params = {}) => {
 
   Vue.component('vm-button', Button.extend(options));
 };
+
+export { Button };
