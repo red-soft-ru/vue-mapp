@@ -12,6 +12,7 @@ import Toggle from '@vmsrc/toggle';
 import Option from '@vmsrc/option';
 import Switch from '@vmsrc/switch';
 import Input from '@vmsrc/input';
+import Textarea from '@vmsrc/textarea';
 
 export function install(Vue, options) {
   Vue.use(Button);
@@ -28,6 +29,7 @@ export function install(Vue, options) {
   Vue.use(Option);
   Vue.use(Switch);
   Vue.use(Input);
+  Vue.use(Textarea);
 }
 
 const plugin = {
