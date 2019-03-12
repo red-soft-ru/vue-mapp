@@ -65,5 +65,10 @@ export default new Router({
       name: 'popup',
       component: () => import('vue-mapp/popup/popup.demo.vue'),
     },
+    {
+      path: '/menu',
+      name: 'menu',
+      component: () => import('vue-mapp/menu/menu.demo.vue'),
+    },
   ],
 });

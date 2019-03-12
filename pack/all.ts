@@ -14,6 +14,7 @@ import Switch from '@vmsrc/switch';
 import Input from '@vmsrc/input';
 import Textarea from '@vmsrc/textarea';
 import Popup from '@vmsrc/popup';
+import Menu from '@vmsrc/menu';
 
 export function install(Vue, options) {
   Vue.use(Button);
@@ -32,6 +33,7 @@ export function install(Vue, options) {
   Vue.use(Input);
   Vue.use(Textarea);
   Vue.use(Popup);
+  Vue.use(Menu);
 }
 
 const plugin = {

@@ -1,0 +1,195 @@
+<script lang="ts">
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import { findElementByClass } from '../helpers/find';
+import { getCssValue } from '../helpers/parse';
+import VueMappPopup from '../popup/popup.vue';
+
+let openedHoverMenu: VueMappMenu | null = null;
+
+@Component({
+  name: 'vm-menu',
+  inheritAttrs: false,
+  components: {
+    'vm-popup': VueMappPopup
+  }
+})
+export default class VueMappMenu extends Vue {
+
+  hoverActive: boolean = false;
+  opened: boolean = false;
+
+  @Prop(Boolean) manual: boolean;
+
+  $refs: {
+    popup: VueMappPopup,
+    trigger: HTMLDivElement
+  };
+
+  @Prop(Boolean) showOnHover: boolean;
+  @Prop(Boolean) closeOnClick: boolean;
+
+  show() {
+    if (openedHoverMenu && openedHoverMenu !== this) {
+      openedHoverMenu.hide();
+    }
+
+    if (this.showOnHover) {
+      openedHoverMenu = this;
+    }
+
+    this.opened = true;
+  }
+
+  hide() {
+    this.hoverActive = false;
+
+    document.removeEventListener('click', this.onGlobalClick, true);
+
+    if (openedHoverMenu === this) {
+      openedHoverMenu = null;
+    }
+
+    this.opened = false;
+    this.$emit('hide');
+  }
+
+  private clickOnOverlay(e): void {
+    if (!this.manual) {
+      this.hide();
+    }
+
+    this.$emit('overlay', e);
+  }
+
+  private clickOnTrigger(): void {
+    if (this.manual) return;
+
+    if (this.opened && this.hoverActive) {
+      this.hoverActive = false;
+      document.addEventListener('click', this.onGlobalClick, true);
+    } else {
+      if (this.opened && !this.hoverActive) {
+        this.hide();
+      } else {
+        this.show();
+      }
+    }
+  }
+
+  private onOutClick(e) {
+
+    if (!this.manual && !this.hoverActive) {
+      // if (this.checkMenuElement(e)) return;
+      this.hide();
+    }
+  }
+
+  private mouseoverTrigger(): void {
+    if (this.showOnHover && !this.opened) {
+      this.hoverActive = true;
+      this.clickOnTrigger();
+    }
+  }
+
+  private mouseoutTrigger(e): void {
+    if (this.checkMenuElement(e)) return;
+    this.hide();
+  }
+
+  private mouseoutContent(): void {
+    if (this.hoverActive) {
+      this.hoverActive = false;
+      this.hide();
+    }
+  }
+
+  private onGlobalClick(e: Event) {
+    if (this.checkMenuElement(e)) return;
+    this.hide();
+  }
+
+  private checkMenuElement(e: Event): boolean {
+
+    return !!findElementByClass({
+      // @ts-ignore
+      element: e.toElement || e.target,
+      searchClass: ['vm-popup', 'vm-menu'],
+      exitElement: this.$el.parentNode
+    });
+  }
+
+  mounted() {
+
+    if (!this.$refs.trigger) {
+      throw new Error('trigger expected');
+    }
+  }
+}
+</script>
+
+<template>
+  <div class="vm-menu">
+    <div
+      ref="trigger"
+      @click="clickOnTrigger"
+      @mouseover="mouseoverTrigger"
+      @mouseout="mouseoutTrigger"
+      class="vm-menu__trigger"
+    >
+      <slot name="trigger" />
+    </div>
+    <vm-popup
+      ref="popup"
+      v-if="opened"
+      v-bind="$attrs"
+      @outside="clickOnOverlay"
+      @mouseout.native="mouseoutContent"
+      @outclick="onOutClick"
+    >
+      <slot />
+    </vm-popup>
+  </div>
+</template>
+
+<style lang="scss">
+@import 'vars';
+
+$menu-base-width: 56px;
+
+.vm-menu {
+  position: relative;
+
+  &__wrapper {
+    font-size: 14px;
+  }
+
+  &__content {
+    background: $color-bg-light;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: -8px;
+    left: calc(50% - 8px);
+    border-color: transparent transparent $color-divider;
+    border-style: solid;
+    border-width: 0 8px 8px;
+
+    &::after {
+      position: absolute;
+      top: 1px;
+      left: -7px;
+      content: '';
+      border-color: transparent transparent $color-bg-light;
+      border-style: solid;
+      border-width: 0 7px 7px;
+    }
+
+    &.is-down {
+      top: auto;
+      bottom: -8px;
+      transform: rotateX(180deg);
+    }
+  }
+}
+</style>
