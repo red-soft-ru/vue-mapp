@@ -1,0 +1,52 @@
+.vm-date {
+  &__header {
+    color: $color-primary-text;
+    background: $color-primary;
+  }
+
+  &__toolbar {
+    &-title,
+    button {
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__years {
+    &-item {
+      &.is--active {
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__time {
+    &-div {
+      color: $color-text-light;
+    }
+  }
+
+  &__day {
+    &-wrapper {
+      &:hover:not(.is--active) {
+        background: $color-bg-dark;
+      }
+
+      &.is--active {
+        color: #fff;
+        background: $color-primary;
+      }
+    }
+  }
+
+  &__days {
+    &-item {
+      &.is--now {
+        &::after {
+          border-color: $color-primary;
+        }
+      }
+    }
+  }
+}

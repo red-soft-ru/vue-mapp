@@ -70,5 +70,10 @@ export default new Router({
       name: 'menu',
       component: () => import('vue-mapp/menu/menu.demo.vue'),
     },
+    {
+      path: '/date',
+      name: 'date',
+      component: () => import('vue-mapp/date/date.demo.vue'),
+    },
   ],
 });
