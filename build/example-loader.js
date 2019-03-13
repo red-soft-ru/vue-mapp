@@ -12,7 +12,7 @@ module.exports = function(source, map) {
 
 	const query = parseQuery(this.resourceQuery);
 	const fileDir = this.resourcePath.replace(path.basename(this.resourcePath), '');
-	const filePath = path.resolve(fileDir, query['path']);
+	const filePath = path.resolve(fileDir, query['path']).replace(/\\/g, '/');
 	const fileName = path.basename(filePath).replace('.vue', '');
   source = fs.readFileSync(filePath, 'utf8');
 
