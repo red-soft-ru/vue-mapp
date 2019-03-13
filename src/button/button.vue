@@ -124,8 +124,9 @@ export default class VueMappButton extends Vue {
   fullWidth: boolean;
 
   onClick() {
-    // remove focus state after click
-    (this.$el as HTMLInputElement).blur();
+    this.$nextTick(() => {
+      (this.$el as HTMLInputElement).blur();
+    });
   }
 }
 </script>

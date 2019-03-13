@@ -35,24 +35,21 @@ export default class App extends Vue {
 }
 
 body {
-  margin: 0;
-  overflow: hidden;
-}
-
-.app-router {
-  flex-grow: 1;
-  height: calc(100vh - 64px);
-}
-
-#app {
   display: flex;
   flex-direction: column;
   min-width: 1140px;
   height: 100vh;
+  margin: 0;
+  overflow: hidden;
   font-family: Roboto, sans-serif;
   color: #2c3e50;
   text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.app-router {
+  flex-grow: 1;
+  height: calc(100vh - 64px);
 }
 </style>

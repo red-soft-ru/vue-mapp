@@ -14,7 +14,10 @@ import { Vue, Component } from 'vue-property-decorator';
 export default class ButtonPrimaryDemo extends Vue {
 
   onClick() {
-    // console.warn('Clicked');
+    this.$snackbar.show({
+      text: 'Привет',
+      actionText: 'Закрыть'
+    });
   }
 }
 </script>

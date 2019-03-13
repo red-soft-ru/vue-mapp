@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { transform } = require('@babel/core');
 const { parseQuery } = require('loader-utils');
-const babelrc = require('./package.json').babel;
+const babelrc = require('../package.json').babel;
 
 const transpile = (code) => transform(code, babelrc).code;
 

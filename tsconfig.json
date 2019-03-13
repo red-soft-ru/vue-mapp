@@ -14,10 +14,12 @@
     "noImplicitAny": false,
     "strictPropertyInitialization": false,
     "baseUrl": ".",
+    "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
       "@vmsrc/*": ["src/*"],
+      "#/*": ["docs/*"],
       "vue-mapp/*": ["src/*"],
-      "#/*": ["docs/*"]
+      "types/*": ["types/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },

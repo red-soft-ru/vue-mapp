@@ -9,6 +9,7 @@ import Divider from '@vmsrc/divider';
 import Card from '@vmsrc/card';
 import Tag from '@vmsrc/tag';
 import Box from '@vmsrc/box';
+import Snackbar from '@vmsrc/snackbar';
 
 export default (Vue, options: any = {}) => {
   Vue.use(Button, options.button);
@@ -21,4 +22,5 @@ export default (Vue, options: any = {}) => {
   Vue.use(Card);
   Vue.use(Tag);
   Vue.use(Box);
+  Vue.use(Snackbar);
 };

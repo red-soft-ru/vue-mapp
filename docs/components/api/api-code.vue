@@ -117,9 +117,9 @@ export default class ApiCode extends Vue {
     clipboard.on('success', event => {
       event.clearSelection();
 
-      // snackbar({
-      //   text: 'Код скопирован'
-      // });
+      this.$snackbar.show({
+        text: 'Код скопирован'
+      });
     });
   }
 }
