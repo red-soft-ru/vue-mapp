@@ -1,0 +1,47 @@
+.vm-select {
+  &__item {
+    background: $color-bg-dark;
+  }
+
+  &__toolbar {
+    &::after {
+      background: $color-divider;
+    }
+
+    &.is--focused::after {
+      background: $color-primary;
+    }
+  }
+
+  .vm-option {
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    transition: background 0.05s cubic-bezier(0.25, 0.8, 0.25, 1);
+    will-change: background, color;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      size: 100%;
+    }
+
+    &:hover::after {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    &:active::after {
+      background: rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  &:not(.is--multiple) {
+    .vm-option {
+      &.is--selected {
+        color: $color-primary;
+      }
+    }
+  }
+}

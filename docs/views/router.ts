@@ -75,5 +75,10 @@ export default new Router({
       name: 'date',
       component: () => import('vue-mapp/date/date.demo.vue'),
     },
+    {
+      path: '/select',
+      name: 'select',
+      component: () => import('vue-mapp/select/select.demo.vue'),
+    },
   ],
 });

@@ -16,6 +16,7 @@ import Textarea from '@vmsrc/textarea';
 import Popup from '@vmsrc/popup';
 import Menu from '@vmsrc/menu';
 import Date from '@vmsrc/date';
+import Select from '@vmsrc/select';
 
 export function install(Vue, options) {
   Vue.use(Button);
@@ -36,6 +37,7 @@ export function install(Vue, options) {
   Vue.use(Popup);
   Vue.use(Menu);
   Vue.use(Date);
+  Vue.use(Select);
 }
 
 const plugin = {
