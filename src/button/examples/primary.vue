@@ -16,7 +16,7 @@ export default class ButtonPrimaryDemo extends Vue {
   onClick() {
     this.$snackbar.show({
       text: 'Привет',
-      actionText: 'Закрыть'
+      actionLabel: 'Закрыть',
     });
   }
 }
