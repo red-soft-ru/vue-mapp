@@ -1,7 +1,6 @@
 const path = require('path');
 const merge = require('deepmerge');
 
-
 function resolve(target) {
   return path.join(__dirname, target);
 }
@@ -20,9 +19,9 @@ module.exports = {
       rules: [
         {
           resourceQuery: /blockType=example/,
-          loader: require.resolve('./build/example-loader.js')
-        }
-      ]
+          loader: require.resolve('./build/example-loader.js'),
+        },
+      ],
     },
     resolve: {
       extensions: ['.ts', '.vue', 'index.ts'],

@@ -10,6 +10,8 @@ import Card from '@vmsrc/card';
 import Tag from '@vmsrc/tag';
 import Box from '@vmsrc/box';
 import Snackbar from '@vmsrc/snackbar';
+import List from '@vmsrc/ul';
+import ListItem from '@vmsrc/li';
 
 export default (Vue, options: any = {}) => {
   Vue.use(Button, options.button);
@@ -23,4 +25,6 @@ export default (Vue, options: any = {}) => {
   Vue.use(Tag);
   Vue.use(Box);
   Vue.use(Snackbar);
+  Vue.use(List);
+  Vue.use(ListItem);
 };

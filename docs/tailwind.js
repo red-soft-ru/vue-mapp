@@ -14,29 +14,29 @@ View the full documentation at https://tailwindcss.com.
 
 */
 
-'use strict'
+'use strict';
 
-const kebabCase = require('lodash/string').kebabCase
+const kebabCase = require('lodash/string').kebabCase;
 
 /*
   resolve colors with $ prefix, and transform to kebab case
 */
 const parseColors = function(colors) {
-  const parsedColors = {}
+  const parsedColors = {};
 
   Object.keys(colors).forEach(key => {
-    let color = colors[key]
+    let color = colors[key];
 
     if (/^\$/.test(color)) {
-      const link = color.slice(1)
-      color = colors[link]
+      const link = color.slice(1);
+      color = colors[link];
     }
 
-    parsedColors[kebabCase(key)] = color
-  })
+    parsedColors[kebabCase(key)] = color;
+  });
 
-  return parsedColors
-}
+  return parsedColors;
+};
 
 /*
 |-------------------------------------------------------------------------------
@@ -108,7 +108,7 @@ const baseColors = {
   link: '$primary',
   linkVisited: '$primary',
   linkActive: '$primary',
-}
+};
 
 const config = {
   colors: baseColors,
@@ -216,10 +216,10 @@ const config = {
     modalaside: '5px 0 10px rgba(0,0,0,0.15)',
     none: 'none',
   },
-}
+};
 
-const colors = parseColors(baseColors)
-const spacing = config.spacing
+const colors = parseColors(baseColors);
+const spacing = config.spacing;
 
 module.exports = {
   /*
@@ -994,4 +994,4 @@ module.exports = {
   experiments: {
     shadowLookup: true,
   },
-}
+};

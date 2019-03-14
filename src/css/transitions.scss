@@ -7,15 +7,14 @@
   opacity: 0;
 }
 
-
 .slide-y {
-
   &-enter-active,
   &-leave-active {
     transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
 
-  &-enter, &-leave-to {
+  &-enter,
+  &-leave-to {
     opacity: 0;
     transform: translateY(-12px);
   }
@@ -27,9 +26,9 @@
     transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
 
-  &-enter, &-leave-to {
+  &-enter,
+  &-leave-to {
     opacity: 0;
     transform: translateX(-12px);
   }
 }
-
