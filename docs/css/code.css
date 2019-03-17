@@ -22,8 +22,7 @@ $token-variable:          #e90;
     color: $token-punctuation;
   }
 
-
-  &.tag,
+  &.ptag,
   &.boolean,
   &.number,
   &.constant,

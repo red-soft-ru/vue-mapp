@@ -95,7 +95,7 @@ export default class VmHeader extends Vue {
   }
 
   &--shadow {
-    box-shadow: $shadow-2;
+    box-shadow: $shadow-sm;
   }
 
   &--xsmall {

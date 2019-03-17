@@ -1,0 +1,31 @@
+@import './vars';
+
+.text-light {
+  color: $color-text-light;
+}
+
+.text-primary {
+  color: $color-primary;
+}
+
+.text-warning {
+  color: $color-warning;
+}
+
+.text-success {
+  color: $color-success;
+}
+
+.text-accent {
+  color: $color-accent;
+}
+
+.bg-primary {
+  color: $color-primary-text;
+  background-color: $color-primary;
+}
+
+.bg-warning {
+  color: $color-primary-text;
+  background-color: $color-warning;
+}

@@ -113,7 +113,7 @@ export default class VmModal extends Vue {
     max-height: calc(100% - 32px);
     background: $bg-default;
     border-radius: 2px;
-    box-shadow: $shadow-4;
+    box-shadow: $shadow-lg;
 
     &--fullscreen {
       width: 100vw;

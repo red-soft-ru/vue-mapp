@@ -26,5 +26,7 @@ export default class ApiDemo extends Vue {
   justify-content: center;
   width: 100%;
   height: 100%;
+
+  @apply p-5;
 }
 </style>

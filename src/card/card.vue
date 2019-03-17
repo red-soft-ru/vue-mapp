@@ -103,20 +103,20 @@ $card-padding: 20px;
     position: relative;
     background: $color-bg-light;
     border-radius: 2px;
-    box-shadow: $card-shadow;
+    box-shadow: $shadow-xs;
 
     &--none {
       box-shadow: none;
     }
 
     &--flat {
-      box-shadow: $shadow-line;
+      box-shadow: $shadow-xs;
     }
 
     &--hoverup {
 
       &:hover {
-        box-shadow: $shadow-4;
+        box-shadow: $shadow-sm;
         transition: box-shadow $transition-ease-out;
       }
     }

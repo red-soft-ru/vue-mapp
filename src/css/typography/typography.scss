@@ -1,0 +1,109 @@
+@import 'vars';
+
+/* stylelint-disable selector-max-type */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: auto;
+}
+
+h1,
+.headline-1 {
+  font-size: 96px;
+  font-weight: $font-light;
+  line-height: 1.16666667em;
+  letter-spacing: 0.015625em;
+}
+
+h2,
+.headline-2 {
+  font-size: 60px;
+  font-weight: $font-light;
+  letter-spacing: 0.00833333em;
+}
+
+h3,
+.headline-3 {
+  font-size: 48px;
+  font-weight: $font-regular;
+  letter-spacing: 0;
+}
+
+h4,
+.headline-4 {
+  font-size: 34px;
+  font-weight: $font-regular;
+  letter-spacing: 0.00735294em;
+}
+
+h5,
+.headline-5 {
+  font-size: 24px;
+  font-weight: $font-regular;
+  letter-spacing: 0;
+}
+
+h6,
+.headline-6 {
+  font-size: 20px;
+  font-weight: $font-medium;
+  letter-spacing: 0.0125em;
+}
+
+.subtitle-1 {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.5em;
+  letter-spacing: 0.009375em;
+}
+
+.subtitle-2 {
+  font-size: 14px;
+  font-weight: $font-medium;
+  line-height: 1.71428571em;
+  letter-spacing: 0.00714286em;
+}
+
+p,
+.body-1 {
+  font-size: 16px;
+  font-weight: $font-regular;
+  line-height: 1.6em;
+  letter-spacing: 0.01em;
+}
+
+.body-2 {
+  font-size: 14px;
+  font-weight: $font-regular;
+  line-height: 1.42857143em;
+  letter-spacing: 0.01785714em;
+}
+
+small,
+.caption {
+  font-size: 12px;
+  font-weight: $font-regular;
+  line-height: 1.33em;
+  letter-spacing: 0.03333333em;
+}
+
+.overline {
+  font-size: 10px;
+  font-weight: $font-medium;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.tag {
+  padding: 3px 6px;
+  margin: 0 2px;
+  color: $color-tag;
+  white-space: nowrap;
+  background: #f8f8f8;
+  border-radius: 2px;
+}

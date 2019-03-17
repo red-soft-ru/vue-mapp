@@ -19,8 +19,8 @@ module.exports = {
     module: {
       rules: [
         {
-          resourceQuery: /blockType=example/,
-          loader: require.resolve('./build/example-loader.js')
+          resourceQuery: /blockType=examples/,
+          loader: require.resolve('./build/examples-loader.js')
         }
       ]
     },

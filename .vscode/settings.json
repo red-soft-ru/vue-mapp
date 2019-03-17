@@ -1,7 +1,7 @@
 {
   "vetur.validation.style": false,
   "vetur.grammar.customBlocks": {
-    "example": "ts"
+    "examples": "yaml"
   },
   "css.validate": false,
   "scss.validate": false,

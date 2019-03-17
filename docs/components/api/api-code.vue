@@ -6,6 +6,7 @@ import { parseComponent } from 'vue-sfc-parser';
 import Prism from 'prismjs';
 import Clipboard from 'clipboard';
 import 'prismjs/plugins/normalize-whitespace/prism-normalize-whitespace';
+import 'prismjs/plugins/custom-class/prism-custom-class';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-scss';
 
@@ -19,6 +20,10 @@ Prism.plugins.NormalizeWhitespace.setDefaults({
   'tabs-to-spaces': 5,
 });
 
+Prism.plugins.customClass.map({
+  tag: 'ptag',
+});
+
 const TAG_SEQUENCE = ['template', 'script', 'style'];
 const BLOCK_TYPES = {
   script: 'typescript',
@@ -29,7 +34,7 @@ const BLOCK_TYPES = {
 @Component
 export default class ApiCode extends Vue {
 
-  selectedBlock: string = 'sfc';
+  selectedBlock: string = 'template';
 
   @Prop({
     type: Object,
@@ -79,7 +84,7 @@ export default class ApiCode extends Vue {
 
         blocks.push({
           name: type,
-          code: Prism.highlight(blockCode, Prism.languages[lang]),
+          code: this.getHighlightedCode(blockCode, lang),
           lang: get(this.parsedSfc, `${type}.lang`, '')
         });
       }
@@ -101,7 +106,11 @@ export default class ApiCode extends Vue {
     const lang = get(this.blockTypes, block, 'html');
 
     if (block === 'sfc') return this.sfcCode;
-    else return trim(Prism.highlight(code, Prism.languages[lang]), '\n');
+    else return trim(this.getHighlightedCode(code, lang), '\n');
+  }
+
+  getHighlightedCode(code, lang) {
+    return Prism.highlight(code, Prism.languages[lang]);
   }
 
   selectBlock(type) {
@@ -160,7 +169,10 @@ export default class ApiCode extends Vue {
       <pre :class="$style.pre">
         <code
           ref="copySource"
-          :class="$style.code"
+          :class="[
+            $style.code,
+            selectedBlock === 'template' && $style.codeTemplate,
+          ]"
           v-html="finalCode"
         />
       </pre>
@@ -194,7 +206,6 @@ export default class ApiCode extends Vue {
   display: flex;
   height: 100%;
   margin: 0;
-  overflow: auto;
   font-size: 1em;
   hyphens: none;
   line-height: 20px;
@@ -205,4 +216,9 @@ export default class ApiCode extends Vue {
   white-space: pre;
   word-spacing: normal;
 }
+
+.codeTemplate {
+  margin-left: -15px;
+}
 </style>
+

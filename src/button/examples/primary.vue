@@ -21,4 +21,3 @@ export default class ButtonPrimaryDemo extends Vue {
   }
 }
 </script>
-

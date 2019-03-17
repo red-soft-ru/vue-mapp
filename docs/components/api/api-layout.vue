@@ -20,38 +20,49 @@
 
     <div :class="$style.params">
       <slot name="params" />
-      <api-examples
-        :examples="examples"
-        @select="onSelectExample"
-      />
+      <api-examples :examples="examples" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import get from 'lodash/get';
 
 @Component
 export default class ApiLayout extends Vue {
 
-  exampleKey: string = '';
+  example: string = '';
 
   @Prop({
-    type: Object,
-    default: () => ({}),
+    type: Array,
+    default: () => [],
   })
-  examples: object;
+  examples: Array;
 
-  get example() {
-    if (this.exampleKey) {
-      return this.examples[this.exampleKey];
-    } else {
-      return {};
-    }
+  @Watch('$route')
+  onRouteChanged(to, from) {
+    const demoKey = to.query.demo;
+
+    if (demoKey) this.setExample(demoKey);
   }
 
-  onSelectExample(key) {
-    this.exampleKey = key;
+  setExample(key: string) {
+    this.example = this.examples.find(ex => ex.name === key);
+  }
+
+  created() {
+    const demoKey = this.$route.query.demo;
+
+    if (demoKey) {
+      this.setExample(demoKey);
+    } else {
+      this.$router.push({
+        query: {
+          demo: get(this.examples, '[0].name'),
+        }
+      });
+    }
   }
 }
 </script>
@@ -69,11 +80,12 @@ export default class ApiLayout extends Vue {
   flex-direction: column;
   width: 60%;
   border-style: solid;
-  border-width: 0 1px 0 0;
+  border-width: 0 2px 0 0;
 }
 
 .params {
   width: 40%;
+  overflow-y: auto;
 }
 
 .code {

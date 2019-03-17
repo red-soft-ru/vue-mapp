@@ -128,5 +128,13 @@ export default class ButtonDemo extends DemoRoute {
   </div> -->
 </template>
 
-<example path="./examples/primary.vue" />
-<example path="./examples/with-loader.vue" />
+<example
+  title="Primary"
+  subtitle="Any subtitle"
+  path="./examples/primary.vue"
+/>
+
+<example
+  title="Loading state"
+  path="./examples/with-loader.vue"
+/>
