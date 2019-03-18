@@ -102,8 +102,19 @@ small,
 .tag {
   padding: 3px 6px;
   margin: 0 2px;
-  color: $color-tag;
+  font-size: 0.875em;
+  font-weight: $font-medium;
+  letter-spacing: 0.8px;
   white-space: nowrap;
-  background: #f8f8f8;
+  vertical-align: middle;
+  background: var(--vm-color-divider);
   border-radius: 2px;
+}
+
+hr {
+  height: 1px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  background: var(--vm-color-divider);
+  border: none;
 }

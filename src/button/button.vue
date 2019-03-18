@@ -7,7 +7,7 @@
       'vm-button',
       theme && 'vm-button--' + theme,
       corner && 'vm-button--' + corner,
-      color && 'vm-button--' + color,
+      filled && color && 'bg-' + color,
       size && !icon && 'vm-button--' + size,
       icon && 'vm-button--icon-' + size,
       {
@@ -81,7 +81,7 @@ export default class VueMappButton extends Vue {
   @Prop({
     type: String,
     default: '',
-    validator: v => !v || /accent|success|warning|primary/.test(v)
+    validator: v => !v || /primary|secondary|error|success|warning|/.test(v)
   })
   color: string;
 
@@ -179,7 +179,7 @@ export default class VueMappButton extends Vue {
     z-index: -1;
     width: 100%;
     height: 100%;
-    content: "";
+    content: '';
     background-color: currentColor;
     opacity: 0;
     transition: opacity 64ms linear;
@@ -211,7 +211,7 @@ export default class VueMappButton extends Vue {
 
     // Find a way to do this better
     &.vm-button--accent {
-      background: $color-accent;
+      background: $color-error;
     }
 
     &.vm-button--warning {
@@ -307,8 +307,8 @@ export default class VueMappButton extends Vue {
     color: $color-warning;
   }
 
-  &--accent {
-    color: $color-accent;
+  &--error {
+    color: $color-error;
   }
 
   &--primary {

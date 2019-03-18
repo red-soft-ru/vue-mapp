@@ -20,9 +20,8 @@ export default class ApiExamples extends Vue {
   }
 
   getHtml(s) {
-    return escapeTags(s.subtitle)
+    return escapeTags(s.subtitle);
   }
-
 }
 </script>
 

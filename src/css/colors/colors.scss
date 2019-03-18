@@ -1,28 +1,32 @@
 @import './vars';
 
 .text-light {
-  color: $color-text-light;
+  color: var(--vm-color-text-light);
 }
 
 .text-primary {
-  color: $color-primary;
+  color: var(--vm-color-primary);
 }
 
 .text-warning {
-  color: $color-warning;
+  color: var(--vm-color-warning);
 }
 
 .text-success {
-  color: $color-success;
+  color: var(--vm-color-success);
 }
 
-.text-accent {
-  color: $color-accent;
+.text-error {
+  color: var(--vm-color-error);
 }
 
 .bg-primary {
-  color: $color-primary-text;
-  background-color: $color-primary;
+  --vm-color-text-light: var(--vm-color-primary-text-light);
+  --vm-color-divider: var(--vm-color-primary-divider);
+  --vm-color-warning: var(--vm-color-primary-warning);
+  color: var(--vm-color-primary-text);
+
+  background-color: var(--vm-color-primary);
 }
 
 .bg-warning {

@@ -2,6 +2,7 @@
   <div :class="$style.root">
     <div :class="$style.left">
       <div :class="$style.demo">
+        <div style="flex-grow: 1;" />
         <slot
           v-if="$slots.demo"
           name="demo"
@@ -96,7 +97,6 @@ export default class ApiLayout extends Vue {
 .demo, .code {
   flex-shrink: 0;
   height: 50%;
-  overflow: auto;
 }
 
 /*

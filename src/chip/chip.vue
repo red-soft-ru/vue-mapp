@@ -47,7 +47,6 @@ export default class VueMappChip extends Vue {
     padding-right: 4px;
     padding-left: 12px;
     margin: 2px 4px 2px 0;
-    font-size: $text-small-1;
     white-space: nowrap;
     background: $color-bg-dark;
     border-radius: 28px;

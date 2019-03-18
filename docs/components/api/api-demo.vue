@@ -14,7 +14,9 @@ export default class ApiDemo extends Vue {
 
 <template>
   <div :class="$style.root">
-    <component :is="component" />
+    <div>
+      <component :is="component" />
+    </div>
   </div>
 </template>
 
@@ -23,9 +25,8 @@ export default class ApiDemo extends Vue {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
-  height: 100%;
 
   @apply p-5;
 }

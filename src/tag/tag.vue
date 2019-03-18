@@ -23,7 +23,6 @@ export default class VueMappTag extends Vue {
   align-items: center;
   height: 24px;
   padding: 0 8px;
-  font-size: $text-small-2;
   font-weight: 500;
   line-height: 1;
   text-transform: uppercase;

@@ -151,7 +151,7 @@ $card-padding: 20px;
     display: flex;
     flex: 1 1 auto;
     margin: 0;
-    font-size: $text-large-3;
+    font-size: 1.28571429em;
     font-weight: 500;
     line-height: $card-header-height;
 

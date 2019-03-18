@@ -27,17 +27,23 @@ export default class VmBox extends Vue {
 .vm-box {
   display: flex;
   flex-direction: column;
+  border-radius: $radius-box;
 
   &__header {
     flex-shrink: 0;
   }
 
   &__body {
+    padding: 20px;
     overflow: auto;
   }
 
   &__footer {
     flex-shrink: 0;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
   }
 }
 </style>
