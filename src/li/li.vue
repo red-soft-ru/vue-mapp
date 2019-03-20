@@ -21,6 +21,13 @@ export default class VueMappListItem extends Vue {
   @Prop([String, Boolean])
   active: string | boolean;
 
+  @Prop({
+    type: String,
+    default: 'single',
+    validator: v => !v || /single|double|triple/.test(v)
+  })
+  theme: string;
+
   render(h) {
     const { closed } = this;
     const defaultSlot = this.$slots.default || [];
@@ -64,10 +71,14 @@ export default class VueMappListItem extends Vue {
 
       entry = [
         h('div', entryParams, [
-          childs,
-          h(VueMappIcon, {
-            staticClass: 'vm-list__item-expander'
-          }, 'keyboard_arrow_up')
+          h('div', {
+            staticClass: 'is--singleline'
+          }, [
+            childs,
+            h(VueMappIcon, {
+              staticClass: 'vm-list__item-expander'
+            }, 'keyboard_arrow_up')
+          ]),
         ]),
         h('div', {
           staticClass: 'vm-list__expand'
@@ -77,7 +88,29 @@ export default class VueMappListItem extends Vue {
         ])
       ];
     } else {
-      entry = h('div', entryParams, childs);
+      function createElement(childs, subtitle = false) {
+        return h('div', {
+          class: {
+            'vm-list__item-row': true,
+            'vm-list__item-subtitle': subtitle
+          }
+        }, childs);
+      }
+
+      entry = h('div', entryParams, [
+        createElement([
+          childs,
+          h('div', this.$slots['top-right']),
+        ]),
+        createElement([
+          h('div', this.$slots['middle-left']),
+          h('div', this.$slots['middle-right']),
+        ], true),
+        createElement([
+          h('div', this.$slots['bottom-left']),
+          h('div', this.$slots['bottom-right']),
+        ], true),
+      ]);
     }
 
     this.haveSublist = haveSublist;

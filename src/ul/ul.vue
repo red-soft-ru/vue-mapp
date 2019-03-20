@@ -54,10 +54,15 @@ export default class VueMappList extends Vue {
   >
     <div
       v-if="label"
-      class="vm-list__label subtitle-1"
+      class="vm-list__label subtitle-2"
     >
       {{ label }}
     </div>
+    <div
+      v-if="theme === 'border'"
+      :class="{ 'is--label': label }"
+      class="vm-list__border"
+    />
     <slot />
   </div>
 </template>
@@ -84,6 +89,13 @@ export default class VueMappList extends Vue {
     min-height: 40px;
     overflow: hidden;
 
+    &-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+    }
+
     &::before, &::after {
       position: absolute;
       left: 0;
@@ -92,11 +104,26 @@ export default class VueMappList extends Vue {
       background: $color-divider;
     }
 
+    .vm-list__border {
+      position: absolute;
+      top: 10px;
+      bottom: 10px;
+      left: 18px;
+      display: block;
+      width: 2px;
+      content: '';
+      background: $color-divider;
+
+      &.is--label {
+        top: 54px;
+      }
+    }
+
     &.is--opened {
 
-      &::before, &::after {
-        content: '';
-      }
+      // &::before, &::after {
+      //   content: '';
+      // }
     }
 
     &.is--opened + &.is--opened {
@@ -117,9 +144,7 @@ export default class VueMappList extends Vue {
     &-head {
       position: relative;
       display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
       min-height: 2.85714286em;
       padding: 10px 16px;
       padding-right: 12px;
@@ -148,6 +173,34 @@ export default class VueMappList extends Vue {
 
       .vm-list.is--icon & {
         padding-left: 64px;
+      }
+
+      .is--singleline {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    &-subtitle {
+      max-height: 20px;
+      font-size: 14px;
+      opacity: .54;
+    }
+
+    & & .vm-list__border {
+      position: absolute;
+      top: 10px;
+      bottom: 10px;
+      left: 3px;
+      display: block;
+      width: 2px;
+      content: '';
+      background: $color-divider;
+
+      &.is--label {
+        top: 54px;
       }
     }
 
@@ -200,16 +253,6 @@ export default class VueMappList extends Vue {
       }
     }
   }
-
-  // &--border {
-  //   background: rgba(189,189,189,.4);
-  //   bottom: 13px;
-  //   display: block;
-  //   left: 50px;
-  //   position: absolute;
-  //   top: 13px;
-  //   width: 2px;
-  // }
 
   &__expand {
 
