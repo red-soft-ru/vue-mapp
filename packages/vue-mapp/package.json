@@ -1,0 +1,30 @@
+{
+  "name": "vue-mapp",
+  "version": "0.0.1",
+  "author": "Roman Tebenkov <iteam4u@ya.ru>",
+  "description": "Web components based on Material Design principles",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/red-soft-ru/vue-mapp.git"
+  },
+  "types": "./types",
+  "keywords": [
+    "vue",
+    "material",
+    "library",
+    "components",
+    "javascript"
+  ],
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/red-soft-ru/vue-mapp/issues"
+  },
+  "homepage": "https://github.com/red-soft-ru/vue-mapp#readme",
+  "peerDependencies": {
+    "vue": "^2.6.7"
+  },
+  "devDependencies": {
+    "standard": "^12.0.1"
+  }
+}

@@ -1,10 +1,14 @@
 .DS_Store
 node_modules
-/dist
+dist
+
+/index.html
 
 # local env files
 .env.local
 # .env.*.local
+
+package-lock.json
 
 # Log files
 npm-debug.log*
@@ -19,3 +23,5 @@ yarn-error.log*
 *.sln
 *.sw*
 *.lock
+*.log
+.rpt2_cache

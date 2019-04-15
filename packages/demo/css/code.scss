@@ -1,0 +1,72 @@
+$token-comment: var(--vm-color-text-light);
+$token-punctuation: var(--vm-color-text-light);
+$token-tag: #2973b7;
+$token-string: #2973b7;
+$token-operator: #a67f59;
+$token-keyword: purple;
+$token-function: blue;
+$token-variable: #e90;
+
+.token {
+  &.comment,
+  &.prolog,
+  &.doctype,
+  &.cdata {
+    color: $token-comment;
+  }
+
+  &.punctuation {
+    color: $token-punctuation;
+  }
+
+  &.ptag,
+  &.boolean,
+  &.number,
+  &.constant,
+  &.symbol,
+  &.deleted {
+    color: $token-tag;
+  }
+
+  &.selector {
+    color: orange;
+  }
+
+  &.attr-name,
+  &.string,
+  &.char,
+  &.inserted {
+    color: $token-string;
+  }
+
+  &.builtin {
+    color: yellow;
+  }
+
+  &.operator,
+  &.entity,
+  &.url,
+  .language-css &.string,
+  .style &.string {
+    color: $token-operator;
+  }
+
+  &.atrule,
+  &.keyword {
+    color: $token-keyword;
+  }
+
+  &.attr-value {
+    color: green;
+  }
+
+  &.function {
+    color: $token-function;
+  }
+
+  &.regex,
+  &.important,
+  &.variable {
+    color: $token-variable;
+  }
+}

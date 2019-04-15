@@ -1,0 +1,9 @@
+
+{
+  "vm-button": {
+    "scope": "vue-html",
+    "prefix": "vm-button",
+    "body": ["<vm-button", "${1|theme,color,disabled|}>", "</vm-button>"],
+    "description": "Кнопка"
+  },
+}

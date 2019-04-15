@@ -1,0 +1,15 @@
+/* stylelint-disable selector-max-type */
+
+@import './themes/default.scss';
+@import './typography/typography.scss';
+@import './shadows/shadows.scss';
+@import './colors/colors.scss';
+@import './transitions/transitions.scss';
+
+* {
+  border-color: var(--vm-color-divider);
+}
+
+body {
+  color: var(--vm-color-text);
+}
