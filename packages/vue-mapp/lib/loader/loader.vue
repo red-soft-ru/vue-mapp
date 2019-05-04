@@ -1,3 +1,17 @@
+<script>
+
+export default {
+  name: 'VmIcon',
+  props: {
+    size: {
+      type: [String, Number],
+      default: '',
+      validator: v => !v || /xsmall|small|large|xlarge/.test(v),
+    },
+  },
+}
+</script>
+
 <template>
   <div
     :class="[
@@ -9,23 +23,6 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-
-@Component({
-  name: 'vm-icon',
-})
-export default class VueMappLoader extends Vue {
-
-  @Prop({
-    type: [String, Number],
-    default: '',
-    validator: v => !v || /xsmall|small|large|xlarge/.test(v)
-  })
-  size: string;
-}
-</script>
-
 <style lang="scss">
 .vm-loader {
   display: flex;
@@ -35,7 +32,7 @@ export default class VueMappLoader extends Vue {
   color: var(--vm-color-primary);
 
   &--xsmall {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   &--small {

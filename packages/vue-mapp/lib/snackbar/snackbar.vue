@@ -1,6 +1,6 @@
 <script>
-import { VmButton } from 'vue-mapp/button';
-import manager from './manager';
+import { VmButton } from 'vue-mapp/lib/button'
+import manager from './manager'
 
 export default {
   name: 'VmSnackbar',
@@ -30,56 +30,57 @@ export default {
     return {
       timer: null,
       active: false,
+      manager,
     }
   },
   beforeDestroy() {
-    this.$el.remove();
+    this.$el.remove()
   },
   methods: {
     show() {
       if (!this.$el) {
-        const div = document.createElement('div');
+        const div = document.createElement('div')
 
-        document.body.appendChild(div);
-        this.$mount(div);
+        document.body.appendChild(div)
+        this.$mount(div)
       }
 
-      this.active = true;
+      this.active = true
     },
     hide() {
-      this.active = false;
+      this.active = false
 
       if (this.timer) {
-        clearTimeout(this.timer);
+        clearTimeout(this.timer)
       }
     },
     onActionClick() {
-      this.$emit('action', event);
-      this.hide();
+      this.$emit('action', event)
+      this.hide()
     },
     afterLeave() {
-      this.$emit('hide');
+      this.$emit('hide')
     },
     afterEnter() {
-      const { duration } = this;
+      const { duration } = this
 
-      this.$emit('show');
+      this.$emit('show')
 
       if (duration > 0) {
         this.timer = setTimeout(() => {
-          this.hide();
-        }, this.duration);
+          this.hide()
+        }, this.duration)
       }
     },
-  }
+  },
 }
 </script>
 
 <template>
   <transition
+    name="slide-y"
     @after-leave="afterLeave"
     @after-enter="afterEnter"
-    name="slide-y"
   >
     <div
       v-if="active"

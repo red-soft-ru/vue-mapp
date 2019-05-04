@@ -1,7 +1,9 @@
-import Icon from './icon.vue'
+import VmIcon from './icon'
 
-export function install(Vue) {
-  Vue.component('vm-icon', Icon)
-};
+export default {
+  install(Vue) {
+    Vue.component('vm-icon', VmIcon)
+  },
+}
 
-export default Icon
+export { default as VmIcon } from './icon'

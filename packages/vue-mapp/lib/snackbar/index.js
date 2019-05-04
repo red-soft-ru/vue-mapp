@@ -1,13 +1,12 @@
-import Snackbar from './snackbar.vue'
+import VmSnackbar from './snackbar'
 import SnackbarManager from './manager'
 
-const manager = new SnackbarManager()
-
 export default {
-  snackbar: manager,
-  Snackbar,
   install(Vue) {
-    Vue.component('vm-snackbar', Snackbar)
-    Vue.prototype.$snackbar = manager
+    Vue.component('vm-snackbar', VmSnackbar)
+    Vue.prototype.$snackbar = SnackbarManager
   },
 }
+
+export { default as snackbar } from './manager'
+export { default as VmSnackbar } from './snackbar'

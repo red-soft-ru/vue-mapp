@@ -1,11 +1,6 @@
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-
-@Component({
-  name: '',
-})
-export default class CardDemo extends Vue {
-
+export default {
+  name: 'CardDemo',
 }
 </script>
 
@@ -75,6 +70,6 @@ export default class CardDemo extends Vue {
 
 <style lang="scss">
 .vm-card {
-  padding: 16px;
+  padding: 1rem;
 }
 </style>

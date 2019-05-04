@@ -1,21 +1,19 @@
-@import 'vars/shadows';
-
 .shadow-xs {
-  box-shadow: $shadow-xs;
+  box-shadow: var(--vm-shadow-xs);
 }
 
 .shadow-sm {
-  box-shadow: $shadow-sm;
+  box-shadow: var(--vm-shadow-sm);
 }
 
 .shadow-md {
-  box-shadow: $shadow-md;
+  box-shadow: var(--vm-shadow-md);
 }
 
 .shadow-lg {
-  box-shadow: $shadow-lg;
+  box-shadow: var(--vm-shadow-lg);
 }
 
 .shadow-xl {
-  box-shadow: $shadow-xl;
+  box-shadow: var(--vm-shadow-xl);
 }

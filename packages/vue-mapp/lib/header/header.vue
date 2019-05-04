@@ -16,6 +16,11 @@ export default {
       default: '',
       validator: v => !v || /shadow|border/.test(v),
     },
+    color: {
+      type: String,
+      default: '',
+      validator: v => !v || /accent|success|warning|primary/.test(v),
+    },
   },
 }
 </script>
@@ -26,7 +31,7 @@ export default {
       'vm-header',
       color && 'vm-header--' + color,
       size && 'vm-header--' + size,
-      theme && 'vm-header--' + theme,
+      view && 'vm-header--' + view,
     ]"
   >
     <div

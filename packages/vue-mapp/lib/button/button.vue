@@ -1,5 +1,5 @@
 <script>
-import VmLoader from 'vue-mapp/loader'
+import VmLoader from 'vue-mapp/lib/loader'
 
 export default {
   components: {
@@ -42,6 +42,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     filled() {
@@ -64,7 +68,7 @@ export default {
 
 <template>
   <button
-    @click="click"
+    v-bind="$attrs"
     :type="type"
     :disabled="disabled || loading"
     :class="[
@@ -79,9 +83,9 @@ export default {
         'vm-button--elevated': look === 'elevated',
       }
     ]"
-    v-on="$listeners"
-    v-bind="$attrs"
     class="vm-button"
+    v-on="$listeners"
+    @click="click"
   >
     <span
       v-if="loading"

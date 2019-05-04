@@ -1,16 +1,13 @@
-<script lang="ts">
-import { Component } from 'vue-property-decorator';
-import DemoRoute from '~/mixins/demo.mixin';
+<script>
+import DemoRoute from '~/mixins/demo.mixin'
 
-@Component({
+export default {
+  mixins: [DemoRoute],
   demo: {
     title: 'Button',
     path: '/button',
     group: 'input',
   },
-})
-export default class ButtonDemo extends DemoRoute {
-
 }
 </script>
 

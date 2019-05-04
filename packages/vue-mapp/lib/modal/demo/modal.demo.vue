@@ -1,9 +1,10 @@
 <script>
 export default {
+  name: 'ModalDemo',
   demo: {
-    title: 'Select',
-    path: '/select',
-    group: 'input',
+    title: 'Modal',
+    path: '/modal',
+    group: 'popup',
   },
 }
 </script>

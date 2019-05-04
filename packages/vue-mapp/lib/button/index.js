@@ -1,8 +1,9 @@
-import VmButton from './button.vue'
+import VmButton from './button'
 
 export default {
-  VmButton,
   install(Vue) {
     Vue.component('vm-button', VmButton)
   },
 }
+
+export { default as VmButton } from './button'

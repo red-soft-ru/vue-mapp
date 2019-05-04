@@ -1,59 +1,35 @@
-const path = require('path');
-const merge = require('deepmerge');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const path = require('path')
 
-function resolve(target) {
-  return path.join(__dirname, target);
-}
+const resolve = v => path.join(__dirname, v)
 
 module.exports = {
-  pages: {
-    index: {
-      entry: './main.ts',
-      template: './public/index.html',
-      filename: 'index.html',
-    },
-  },
   configureWebpack: {
     name: 'Vue Mapp Demo',
     module: {
       rules: [
         {
           resourceQuery: /blockType=examples/,
-          loader: require.resolve('./build/examples-loader.js')
+          loader: require.resolve('./build/examples-loader.js'),
         },
-      ]
+      ],
     },
     resolve: {
-      alias: {
-        vue$: resolve('node_modules/vue'),
-        'vue-property-decorator': resolve('node_modules/vue-property-decorator'),
-      },
-      extensions: ['.ts', '.vue', 'index.ts'],
+      extensions: ['.js', '.vue'],
       symlinks: true,
-      plugins: [
-        new TsconfigPathsPlugin({
-          configFile: '../../tsconfig.json'
-        })
-      ]
+      alias: {
+        '~': resolve('src'),
+      },
     },
   },
   css: {
     loaderOptions: {
       postcss: {
         plugins: [
-          require('tailwindcss')(`./tailwind.js`),
           require('autoprefixer')({
             grid: true,
           }),
         ],
       },
-      sass: {
-        includePaths: [
-          './src/css',
-          '../vue-mapp/css'
-        ],
-      },
     },
   },
-};
+}

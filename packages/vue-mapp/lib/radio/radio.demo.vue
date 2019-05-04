@@ -1,14 +1,11 @@
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-
-@Component({
+<script>
+export default {
+  name: 'RadioDemo',
   demo: {
     title: 'Radio',
     path: '/radio',
     group: 'input',
   },
-})
-export default class RadioDemo extends Vue {
 }
 </script>
 

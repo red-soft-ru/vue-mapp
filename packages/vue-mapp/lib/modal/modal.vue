@@ -1,3 +1,44 @@
+<script>
+
+export default {
+  name: 'VmModal',
+  props: {
+    maxWidth: {
+      type: [String, Number],
+      default: 480,
+    },
+    fullscreen: {
+      type: Boolean,
+      default: false,
+    },
+    transition: {
+      type: String,
+      default: 'slide-y',
+    },
+    position: {
+      type: String,
+      default: '',
+      validator: v => !v || /top|right|bottom|left/.test(v),
+    },
+  },
+  data() {
+    return {
+      overlay: false,
+    }
+  },
+  computed: {
+    simple() {
+      return !(this.$slots.header && this.$slots.footer)
+    },
+  },
+  methods: {
+    close(e) {
+      this.$emit('close', e)
+    },
+  },
+}
+</script>
+
 <template>
   <transition
     :name="transition"
@@ -31,59 +72,15 @@
       <transition :name="transition && 'fade'">
         <div
           v-if="overlay"
-          @click="close"
           class="vm-modal__overlay"
+          @click="close"
         />
       </transition>
     </div>
   </transition>
 </template>
 
-<script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-
-@Component
-export default class VmModal extends Vue {
-
-  overlay: boolean = false;
-
-  @Prop({
-    type: [String, Number],
-    default: 480,
-  })
-  maxWidth: string | number;
-
-  @Prop({
-    type: Boolean,
-    default: false,
-  })
-  fullscreen: boolean;
-
-  @Prop({
-    type: String,
-    default: 'slide-y',
-  })
-  transition: string;
-
-  @Prop({
-    type: String,
-    default: '',
-    validator: v => !v || /top|right|bottom|left/.test(v),
-  })
-  position: string;
-
-  get simple(): boolean {
-    return !(this.$slots.header && this.$slots.footer);
-  }
-
-  close(e) {
-    this.$emit('close', e);
-  }
-}
-</script>
-
 <style lang="scss">
-@import 'vars/shadows';
 
 .vm-modal {
   position: fixed;
@@ -113,14 +110,14 @@ export default class VmModal extends Vue {
     max-height: calc(100% - 32px);
     background: var(--vm-bg-default);
     border-radius: 2px;
-    box-shadow: $shadow-lg;
+    box-shadow: var(--vm-shadow-lg);
 
     &--fullscreen {
       width: 100vw;
       max-width: none;
       height: 100vh;
       max-height: none;
-      border-radius: none;
+      border-radius: 0;
     }
   }
 
