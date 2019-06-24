@@ -1,39 +1,68 @@
 <script>
+import manager from 'vue-mapp/controller/modal'
 
 export default {
-  name: 'VmModal',
+  name: 'TheModal',
+  inheritAttrs: false,
   props: {
-    maxWidth: {
-      type: [String, Number],
-      default: 480,
-    },
-    fullscreen: {
-      type: Boolean,
-      default: false,
-    },
-    transition: {
+    name: {
       type: String,
-      default: 'slide-y',
+      required: true,
     },
-    position: {
+    width: {
+      type: String,
+      default: 'sm',
+      validator: v => !v || /xs|sm|md|lg/.test(v),
+    },
+    height: {
       type: String,
       default: '',
-      validator: v => !v || /top|right|bottom|left/.test(v),
+      validator: v => !v || /xs|sm|md/.test(v),
+    },
+    fullscreen: {
+      type: [Boolean, String],
+      default: false,
+      validator: v => typeof v === 'boolean' || /mobile/.test(v),
+    },
+    closable: {
+      type: [Boolean, String],
+      default: true,
+      validator: v => typeof v === 'boolean' || /icon|overlay/.test(v),
     },
   },
   data() {
     return {
+      visible: false,
       overlay: false,
     }
   },
-  computed: {
-    simple() {
-      return !(this.$slots.header && this.$slots.footer)
-    },
+  created() {
+    manager.register(this)
+  },
+  mounted() {
+    document.body.appendChild(this.$el)
+  },
+  destroyed() {
+    this.$el.remove()
+    manager.hide(this.name)
   },
   methods: {
-    close(e) {
-      this.$emit('close', e)
+    show() {
+      manager.show(this.name)
+    },
+    hide(e) {
+      manager.hide(this.name)
+      this.$emit('close')
+    },
+    clickOnOverlay() {
+      if (this.closable === true || this.closable === 'overlay') {
+        this.hide()
+      }
+      this.$emit('overlay')
+    },
+    onOpened() {
+      this.overlay = true
+      this.$emit('show')
     },
   },
 }
@@ -41,95 +70,59 @@ export default {
 
 <template>
   <transition
-    :name="transition"
+    v-if="visible"
+    name="slide-y"
+    @enter="onOpened"
     @before-leave="overlay = false"
-    @enter="overlay = true"
   >
-    <div class="vm-modal">
-      <div class="vm-modal__spacer" />
-      <div
-        :style="{
-          maxWidth: maxWidth ? maxWidth + 'px' : null,
-        }"
+    <div class="the-modal">
+      <div class="the-modal__spacer" />
+
+      <the-box
+        v-bind="$attrs"
         :class="{
-          'vm-modal__content': true,
-          'vm-modal__content--fullscreen': fullscreen,
+          'the-modal__box': true,
+          [`the-modal__box--w${width}`]: width,
+          [`the-modal__box--h${height}`]: height,
+          'the-modal__box--full-mobile': fullscreen === 'mobile',
+          'the-modal__box--full': fullscreen === true,
         }"
       >
-        <div class="vm-modal__header">
-          <slot name="header" />
-        </div>
+        <base-button
+          v-if="!$scopedSlots.menu && (closable === true || closable === 'icon')"
+          slot="menu"
+          class="the-modal__close"
+          icon="close"
+          @click="hide"
+        />
 
-        <div class="vm-modal__body">
-          <slot />
-        </div>
+        <template
+          v-for="(_, slotName) in $scopedSlots"
+          :slot="slotName"
+        >
+          <div
+            :key="slotName"
+            data-scroll-lock-scrollable
+            class="the-modal__scrollable"
+          >
+            <slot :name="slotName" />
+          </div>
+        </template>
+      </the-box>
 
-        <div class="vm-modal__footer">
-          <slot name="footer" />
-        </div>
-      </div>
-      <div class="vm-modal__spacer" />
-      <transition :name="transition && 'fade'">
+      <div class="the-modal__spacer" />
+
+      <transition
+        v-if="overlay"
+        name="fade"
+      >
         <div
-          v-if="overlay"
-          class="vm-modal__overlay"
-          @click="close"
+          class="the-modal__overlay"
+          @click="clickOnOverlay"
         />
       </transition>
     </div>
   </transition>
 </template>
 
-<style lang="scss">
-
-.vm-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  // padding: 32px 0;
-
-  &--simple {
-    overflow: auto;
-  }
-
-  &__spacer {
-    flex-grow: 1;
-  }
-
-  &__content {
-    z-index: 2;
-    min-width: 320px;
-    max-width: calc(100% - 32px);
-    height: auto;
-    max-height: calc(100% - 32px);
-    background: var(--vm-bg-default);
-    border-radius: 2px;
-    box-shadow: var(--vm-shadow-lg);
-
-    &--fullscreen {
-      width: 100vw;
-      max-width: none;
-      height: 100vh;
-      max-height: none;
-      border-radius: 0;
-    }
-  }
-
-  &__overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 120vw;
-    height: 120vh;
-    background: var(--vm-bg-overlay);
-    transform: translate(-10vw, -10vh);
-  }
-}
-</style>
+<style lang="scss" src="./modal.scss"></style>

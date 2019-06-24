@@ -1,18 +1,26 @@
 <template>
-  <div id="app">
-    <app-header />
-    <app-menu v-if="menuVisible" />
+  <vm-layout>
+    <div slot="sidebar">
+      sdasd
+    </div>
+    <app-menu
+      v-if="menuVisible"
+    />
     <main class="app-router">
       <router-view />
     </main>
-  </div>
+  </vm-layout>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import VmLayout from 'vue-mapp/layout'
 
 export default {
   name: 'App',
+  components: {
+    VmLayout,
+  },
   computed: {
     ...mapGetters('ui', [
       'menuVisible',
@@ -43,8 +51,8 @@ export default {
 body {
   display: flex;
   flex-direction: column;
-  min-width: 1140px;
-  height: 100vh;
+  // min-width: 1140px;
+  // height: 100vh;
   margin: 0;
   overflow: hidden;
   font-family: Roboto, sans-serif;

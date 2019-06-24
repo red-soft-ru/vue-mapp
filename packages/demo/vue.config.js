@@ -23,6 +23,9 @@ module.exports = {
   },
   css: {
     loaderOptions: {
+      sass: {
+        data: `@import "~vue-mapp/css/functions.scss";`,
+      },
       postcss: {
         plugins: [
           require('autoprefixer')({

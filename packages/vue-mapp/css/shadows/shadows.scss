@@ -1,3 +1,20 @@
+$sha: rgba(0, 0, 0, 0.2);
+$shu: rgba(0, 0, 0, 0.14);
+$shp: rgba(0, 0, 0, 0.12);
+
+:root {
+  --vm-shadow-xs: 0 1px 3px 0 #{$sha}, 0 1px 1px 0 #{$shu},
+    0 2px 1px -1px #{$shp};
+  --vm-shadow-sm: 0 2px 4px -1px #{$sha}, 0 4px 5px 0 #{$shu},
+    0 1px 10px 0 #{$shp};
+  --vm-shadow-md: 0 3px 5px -1px #{$sha}, 0 6px 10px 0 #{$shu},
+    0 1px 18px 0 #{shp};
+  --vm-shadow-lg: 0 7px 8px -4px #{$sha}, 0 12px 17px 2px #{$shu},
+    0 5px 22px 4px #{$shp};
+  --vm-shadow-xl: 0 11px 15px -7px #{$sha}, 0 24px 38px 3px #{$shu},
+    0 9px 46px 8px #{$shp};
+}
+
 .shadow-xs {
   box-shadow: var(--vm-shadow-xs);
 }

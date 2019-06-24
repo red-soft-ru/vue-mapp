@@ -27,7 +27,7 @@ export const actions = {
 
     exec.keys().forEach(file => {
       const component = exec(file).default
-      const options = get(component, 'options.demo')
+      const options = get(component, 'demo')
 
       if (options) {
         components.push(options)
@@ -41,6 +41,8 @@ export const actions = {
         })
       }
     })
+
+    console.log(components)
 
     commit('SET_COMPONENTS', components)
     router.addRoutes(routes)

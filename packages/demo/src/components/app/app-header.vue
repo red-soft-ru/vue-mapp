@@ -19,7 +19,7 @@ export default {
 <template>
   <vm-header
     color="primary"
-    theme="shadow"
+    view="shadow"
   >
     <vm-button
       slot="trigger"

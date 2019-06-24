@@ -1,0 +1,22 @@
+// FYI: This file is to store only global functions, mixins, variables and other abstract calls
+// Please, store NO classes or any other selectors here
+
+//  ------------------------------ SASS-MQ PARAMS -------------------------------------
+
+// To enable support for browsers that do not support @media queries,
+// (IE <= 8, Firefox <= 3, Opera <= 9) set $mq-responsive to false
+// Create a separate stylesheet served exclusively to these browsers,
+// meaning @media queries will be rasterized, relying on the cascade itself
+$mq-responsive: true;
+
+$mq-breakpoints: (
+  xxs: 360px,
+  xs: 576px,
+  sm: 768px,
+  md: 1024px,
+  lg: 1440px,
+  xl: 1920px,
+);
+
+@import '~sass-mq';
+@import '~sass-rem';
