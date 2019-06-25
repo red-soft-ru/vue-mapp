@@ -9,6 +9,7 @@ import Divider from './lib/divider'
 import Tag from './lib/tag'
 import Snackbar from './lib/snackbar'
 import Outside from './lib/outside'
+import Overlay from './lib/overlay'
 import controller from './controller'
 
 export default function(Vue) {
@@ -23,6 +24,7 @@ export default function(Vue) {
   Vue.use(Box)
   Vue.use(Snackbar)
   Vue.use(Outside)
+  Vue.use(Overlay)
 
   Vue.use(controller)
 };

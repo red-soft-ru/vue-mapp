@@ -1,3 +1,7 @@
+:root {
+  --vm-transition: cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.1s;
@@ -30,5 +34,50 @@
   &-leave-to {
     opacity: 0;
     transform: translateX(-12px);
+  }
+}
+
+.outside-left,
+.outside-right,
+.outside-top,
+.outside-bottom {
+  &-enter-active,
+  &-leave-active {
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+}
+
+.outside-right,
+.outside-left {
+  &-enter {
+    transform: translateX(0);
+  }
+}
+
+.outside-left {
+  &-enter,
+  &-leave-to {
+    transform: translateX(-100%);
+  }
+}
+
+.outside-right {
+  &-enter,
+  &-leave-to {
+    transform: translateX(100%);
+  }
+}
+
+.outside-top {
+  &-enter,
+  &-leave-to {
+    transform: translateY(-100%);
+  }
+}
+
+.outside-bottom {
+  &-enter,
+  &-leave-to {
+    transform: translateY(100%);
   }
 }

@@ -1,12 +1,11 @@
 <template>
   <div class="vm-layout">
-    <nav
-      v-if="$slots.sidebar"
-      class="vm-layout__nav"
+    <vm-outside
+      name="vm-layout-aside"
+      position="left"
     >
       <slot name="sidebar" />
-    </nav>
-    <vm-outside name="vm-layout-aside" />
+    </vm-outside>
     <div class="vm-layout__wrapper">
       <vm-header
         class="vm-layout__header bg-primary"
@@ -18,7 +17,10 @@
           icon="menu"
           @click="showMenu"
         />
-        <vm-button icon="settings" />
+        <vm-button
+          icon="settings"
+          @click="showMenu"
+        />
         <slot name="header" />
       </vm-header>
       <main class="vm-layout__main">
@@ -47,28 +49,27 @@ export default {
 
 <style lang="scss">
 .vm-layout {
+  display: flex;
   width: 100vw;
   height: 100vh;
-  display: flex;
   overflow: hidden;
   background-color: #edeef0;
 
   &__nav {
-    // position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-    z-index: 20;
-    will-change: transform;
-    outline: none;
-    left: 0;
-    top: 0;
-    box-shadow: var(--vm-shadow-md);
-    height: 100vh;
     width: 18rem;
-    transition: transform .4s cubic-bezier(.25,.8,.25,1);
-    box-shadow: 0 1px 5px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
+    height: 100vh;
     background: #FFF;
+    outline: none;
+    box-shadow: var(--vm-shadow-md);
+    // box-shadow: 0 1px 5px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
+    transition: transform .4s cubic-bezier(.25,.8,.25,1);
+    will-change: transform;
 
     &.is--hidden {
       transform: translateX(-105%);
@@ -76,8 +77,8 @@ export default {
 
     .vm-layout.is--fixed & {
       position: relative;
-      box-shadow: var(--vm-shadow-md);
       flex-shrink: 0;
+      box-shadow: var(--vm-shadow-md);
       transition: none;
     }
   }

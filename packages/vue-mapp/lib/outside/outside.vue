@@ -1,135 +1,94 @@
 <script>
+import modal from 'vue-mapp/mixins/modal.mixin'
+import VmOverlay from 'vue-mapp/lib/overlay'
 
 export default {
   name: 'VmOutside',
+  components: {
+    VmOverlay,
+  },
+  mixins: [modal],
   props: {
-    maxWidth: {
+    size: {
       type: [String, Number],
-      default: 480,
-    },
-    fullscreen: {
-      type: Boolean,
-      default: false,
-    },
-    transition: {
-      type: String,
-      default: 'slide-y',
+      default: 0,
     },
     position: {
       type: String,
-      default: '',
-      validator: v => !v || /top|right|bottom|left/.test(v),
+      default: 'left',
+      validator: v => /left|right|top|bottom/.test(v),
     },
-  },
-  data() {
-    return {
-      overlay: false,
-    }
+    overlay: {
+      type: Boolean,
+      default: true,
+    },
   },
   computed: {
-    simple() {
-      return !(this.$slots.header && this.$slots.footer)
+    vertical() {
+      return /top|bottom/.test(this.position)
     },
-  },
-  methods: {
-    close(e) {
-      this.$emit('close', e)
+    boxStyles() {
+      const styles = {}
+
+      if (this.size) {
+        const size = typeof this.size === 'number' ? `${this.size}px` : this.size
+
+        if (this.vertical) {
+          styles.height = size
+        } else {
+          styles.width = size
+        }
+      }
+
+      return Object.keys(styles).length ? styles : null
     },
   },
 }
 </script>
 
 <template>
-  <transition
-    :name="transition"
-    @before-leave="overlay = false"
-    @enter="overlay = true"
+  <aside
+    :name="name"
+    class="vm-outside"
   >
-    <div class="vm-outside">
-      <div class="vm-modal__spacer" />
-      <div
-        :style="{
-          maxWidth: maxWidth ? maxWidth + 'px' : null,
-        }"
-        :class="{
-          'vm-modal__content': true,
-          'vm-modal__content--fullscreen': fullscreen,
-        }"
+    <transition
+      v-if="visible"
+      :name="`outside-${position}`"
+      appear
+      @enter="onOpened"
+      @after-leave="onClosed"
+    >
+      <vm-box
+        v-bind="$attrs"
+        :style="boxStyles"
+        :class="[
+          'vm-outside__box',
+          vertical && 'vm-outside__box--vertical',
+          position && `vm-outside__box--${position}`,
+        ]"
       >
-        <div class="vm-modal__header">
-          <slot name="header" />
-        </div>
+        <template
+          v-for="(_, slotName) in $scopedSlots"
+          :slot="slotName"
+        >
+          <div
+            :key="slotName"
+            data-scroll-lock-scrollable
+            class="vm-outside__scrollable"
+          >
+            <slot :name="slotName" />
+          </div>
+        </template>
+      </vm-box>
+    </transition>
 
-        <div class="vm-modal__body">
-          <slot />
-        </div>
-
-        <div class="vm-modal__footer">
-          <slot name="footer" />
-        </div>
-      </div>
-      <div class="vm-modal__spacer" />
-      <transition :name="transition && 'fade'">
-        <div
-          v-if="overlay"
-          class="vm-modal__overlay"
-          @click="close"
-        />
-      </transition>
-    </div>
-  </transition>
+    <transition
+      v-if="visible"
+      name="fade"
+    >
+      <vm-overlay @click="clickOnOverlay" />
+    </transition>
+  </aside>
 </template>
 
-<style lang="scss">
-
-.vm-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  // padding: 32px 0;
-
-  &--simple {
-    overflow: auto;
-  }
-
-  &__spacer {
-    flex-grow: 1;
-  }
-
-  &__content {
-    z-index: 2;
-    min-width: 320px;
-    max-width: calc(100% - 32px);
-    height: auto;
-    max-height: calc(100% - 32px);
-    background: var(--vm-bg-default);
-    border-radius: 2px;
-    box-shadow: var(--vm-shadow-lg);
-
-    &--fullscreen {
-      width: 100vw;
-      max-width: none;
-      height: 100vh;
-      max-height: none;
-      border-radius: 0;
-    }
-  }
-
-  &__overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 120vw;
-    height: 120vh;
-    background: var(--vm-bg-overlay);
-    transform: translate(-10vw, -10vh);
-  }
-}
-</style>
+<style lang="scss" src="./outside.scss"></style>

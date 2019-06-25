@@ -1,0 +1,39 @@
+.vm-outside {
+  z-index: 1000;
+
+  &--simple {
+    overflow: auto;
+  }
+
+  &__spacer {
+    flex-grow: 1;
+  }
+
+  &__box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: rem(296px);
+    height: 100%;
+    margin-right: auto;
+    background: var(--vm-box-bg);
+    box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.2);
+    will-change: transform;
+
+    &--vertical {
+      width: 100%;
+      height: rem(272px);
+    }
+
+    &--right {
+      right: 0;
+      left: auto;
+    }
+
+    &--bottom {
+      top: auto;
+      bottom: 0;
+    }
+  }
+}
